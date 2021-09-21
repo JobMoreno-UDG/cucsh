@@ -19,7 +19,7 @@
     <title>@yield('titulo','Inicio')</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,14 +28,14 @@
             <div class="navbar-nav">
               <a class="nav-link" aria-current="page" href="{{route('inicio')}}">Home</a>
               <a class="nav-link" href="#">Libros</a>
-              <a class="nav-link" href="#">Revistas</a>
+              <a class="nav-link" href="{{route('revistas.index')}}">Revistas</a>
               <a class="nav-link" href="{{route('bibliografia_digital.index')}}">Biblioteca Digital</a>
               <a class="nav-link" href="{{route('cuadernos.index')}}">Cuadernos</a>
             </div>
           </div>
         </div>
       </nav>
-      <div class="container">
+      <div class="container p-5">
           @yield('content')
       </div>
 </body>

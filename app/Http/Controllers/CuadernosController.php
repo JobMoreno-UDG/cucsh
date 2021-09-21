@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CuadernosController extends Controller
 {
     public function index(){
-        $cuadernos = Cuadernos::paginate();
+        $cuadernos = Cuadernos::paginate(5);
         return view('Cuadernos.index',compact('cuadernos'));
     }
 
