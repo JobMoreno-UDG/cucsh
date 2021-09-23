@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="col-auto">
-                    <a href="{{ route('cuadernos.show', $item->clasificacion) }}" class="btn btn-outline-dark ">Ver</a>
+                    <a href="{{ route('cuadernos.show', $item->clasificacion) }}" class="btn btn-primary ">Ver</a>
                     <a href="{{ route('cuadernos.edit', $item->clasificacion) }}" class="btn btn-warning ">Editar</a>
                     <a href="{{ route('cuadernos.edit', $item->clasificacion) }}" class="btn btn-danger ">Eliminar</a>
                 </div>
