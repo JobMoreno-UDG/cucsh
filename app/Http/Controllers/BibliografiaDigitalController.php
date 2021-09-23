@@ -15,4 +15,8 @@ class BibliografiaDigitalController extends Controller
         $bibliografia = BibliografiaDigital::where('clasificacion',$bibliografia)->get();
         return view('BibliografiaDigital.show',['bibliografia'=>$bibliografia[0]]);
     }
+    public function edit($bibliografia){
+        $bibliografia = BibliografiaDigital::where('clasificacion',$bibliografia)->get()[0];
+        return view('BibliografiaDigital.edit',compact('bibliografia'));
+    }
 }

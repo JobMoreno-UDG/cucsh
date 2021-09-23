@@ -16,9 +16,6 @@
     </div>
   </form>
 
-
-
-
     @foreach ($bibliografia as $item)
         <div class="card">
             <div class="card-body">

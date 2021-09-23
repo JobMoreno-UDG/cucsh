@@ -73,5 +73,5 @@
         <span><b>Fecha Prestado A: </b><br> {{ $info->fecha_prestadoA }}</span>
     </div>
 </div>
-
+<a href="{{route('cuadernos.edit',['cuaderno' => $cuaderno->clasificacion])}}" class="btn btn-warning">Editar</a>
 @endsection()
