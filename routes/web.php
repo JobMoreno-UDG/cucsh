@@ -3,6 +3,7 @@
 use App\Http\Controllers\BibliografiaDigitalController;
 use App\Http\Controllers\CuadernosController;
 use App\Http\Controllers\RevistasController;
+use App\Http\Controllers\LibrosController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -43,3 +44,7 @@ Route::get('cuadernos/{cuaderno}/edit',[CuadernosController::class,'edit'])->nam
 Route::get('revistas',[RevistasController::class,'index'])->name('revistas.index');
 Route::get('revistas/{revista}',[RevistasController::class,'show'])->name('revistas.show');
 Route::get('revistas/{revista}/edit',[RevistasController::class,'show'])->name('revistas.edit');
+
+#Rutas Libros
+
+Route::get('libros',[LibrosController::class,'index'])->name('libros.index');
