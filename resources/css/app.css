@@ -3,3 +3,6 @@ span {
     margin: 3px;
     display: inline-flex;
 }
+.btn-warning{
+    background-color: cornflowerblue;
+}

@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 # Rutas de bibliografia Digital
 
 Route::get('bibliogarfia_digital',[BibliografiaDigitalController::class,'index'])->name('bibliografia_digital.index');
@@ -36,6 +37,9 @@ Route::get('cuadernos',[CuadernosController::class,'index'])->name('cuadernos.in
 Route::get('cuadernos/{cuaderno}',[CuadernosController::class,'show'])->name('cuadernos.show');
 Route::get('cuadernos/{cuaderno}/edit',[CuadernosController::class,'edit'])->name('cuadernos.edit');
 
+
 #Rutas Revistas
 
 Route::get('revistas',[RevistasController::class,'index'])->name('revistas.index');
+Route::get('revistas/{revista}',[RevistasController::class,'show'])->name('revistas.show');
+Route::get('revistas/{revista}/edit',[RevistasController::class,'show'])->name('revistas.edit');

@@ -18,4 +18,32 @@
         <a class="col-sm-12  col-auto btn btn-outline-dark" href="">Cerrar Prestamo</a>
     </div>
   </form>
+@foreach ($revista as $item)
+  <div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <h5 class="card-title"><b>Titulo: </b>{{ $item->titulo }}</h5>
+            </div>
+            <div class="col-auto">
+                <span><b>Autor: </b>{{ $item->autor }}</span>
+            </div>
+            <div class="col-auto">
+                <span><b>Clasificación: </b>{{ $item->clasificacion }}</span>
+            </div>
+            <div class="col-auto">
+                <span><b>Año: </b>{{ $item->anio }}</span>
+            </div>
+        </div>
+        <div class="col-auto">
+            <a href="{{ route('revistas.show', $item->clasificacion) }}" class="btn btn-outline-primary ">Ver</a>
+            <!--<a href="{{ route('revistas.edit', $item->clasificacion) }}" class="btn btn-warning ">Editar</a>
+            <a href="{{ route('revistas.edit', $item->clasificacion) }}" class="btn btn-danger ">Eliminar</a>-->
+        </div>
+  </div>
+</div>
+@endforeach
+
+
+  {{$revista->links()}}
   @endsection

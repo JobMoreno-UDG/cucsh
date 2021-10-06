@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRevistasTable extends Migration
+class CreateLibrosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,20 @@ class CreateRevistasTable extends Migration
      */
     public function up()
     {
-        Schema::create('revistas', function (Blueprint $table) {
+        Schema::create('libros', function (Blueprint $table) {
             $table->string('clasificacion',15)->unique();
-            $table->string('titulo',100);
+            $table->string('titulo',60);
             $table->string('autor',50);
-            $table->year('anio');
-            $table->string('tomo_numero',15);
-            $table->string('editorial',50);
+            $table->year('anio');      
+            $table->string('tomo_numero',20);  
+            $table->string('editorial',25);    
             $table->string('lugar_publicacion',50);
-            $table->integer('paginas');
-            $table->string('volumen',10);
-            $table->string('serie',20);
+            $table->integer('paginas')->default(0);
+            $table->string('volumen',15);
+            $table->string('serie',40);
             $table->string('isbn_issn',25);
             $table->dateTime('fecha_ingreso');
-            $table->string('situacion',15);
-            $table->string('space',20);
-            $table->string('space2',20);
+            $table->string('situacion',25);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -41,6 +39,6 @@ class CreateRevistasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('revistas');
+        Schema::dropIfExists('libros');
     }
 }

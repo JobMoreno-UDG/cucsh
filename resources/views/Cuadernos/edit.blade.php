@@ -90,7 +90,7 @@
     </div>
     <div class="col-12 m-2 ">
         <button type="submit" class="btn btn-warning col-sm-3">Actualizar</button>
-        <a class="btn btn-dark col-sm-3" href="{{route('bibliografia_digital.show',$cuaderno->clasificacion)}}">Regresar</a>
+        <a class="btn btn-dark col-sm-3" href="{{route('cuadernos.index')}}">Regresar</a>
     </div>
 </form>
 @endsection

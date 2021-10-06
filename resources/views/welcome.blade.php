@@ -2,5 +2,6 @@
 @section('titulo','Inicio')
     
 @section('content')
-<h1>Página de Inicio</h1>
+<h1>Bienvenido</h1>
+<h2>Página de Inicio</h2>
 @endsection
