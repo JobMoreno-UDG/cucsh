@@ -11,4 +11,9 @@ class LibrosController extends Controller
         $libros = Libros::paginate(5);
         return view('Libros.index',compact('libros'));
     }
+    public function show($libro){
+        $libro = Libros::where('clasificacion',$libro)->get()[0];
+        return view('Libros.show',compact('libro'));
+
+    }
 }

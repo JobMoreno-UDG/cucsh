@@ -55,9 +55,6 @@
     <div class="col-sm-12 col-md-3">
         <span><b>Contenido: </b> <br>{{ $info->contenido }}</span>
     </div>
-    <div class="col-sm-12 col-md-3">
-        <span><b>Prestado A: </b><br> {{ $info->prestadoA }}</span>
-    </div>
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-3">
@@ -70,7 +67,7 @@
         <span><b>Fecha Publicación: </b> <br>{{ $info->fecha_publicacion }}</span>
     </div>
     <div class="col-sm-12 col-md-3">
-        <span><b>Fecha Prestado A: </b><br> {{ $info->fecha_prestadoA }}</span>
+        <span><b>Fecha Ingreso: </b><br> {{ $cuaderno->fecha_ingreso }}</span>
     </div>
 </div>
 <a href="{{route('cuadernos.edit',['cuaderno' => $cuaderno->clasificacion])}}" class="btn btn-warning">Editar</a>

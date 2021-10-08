@@ -19,11 +19,9 @@ class CreateInformacionTable extends Migration
             $table->string('obtencion',50);
             $table->string('resguardo',50);
             $table->text('contenido');
-            $table->string('prestadoA',50);
             $table->integer('codigo_barras')->default(0);
             $table->string('inventario',20);
             $table->dateTime('fecha_publicacion');
-            $table->dateTime('fecha_prestadoA');
             $table->softDeletes();
             $table->timestamps();
         });

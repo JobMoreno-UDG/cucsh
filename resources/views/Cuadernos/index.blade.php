@@ -10,7 +10,7 @@
             <button type="submit" class="btn btn-dark mb-3">Buscar</button>
         </div>
         <div class="col-sm-12 col-md-5 m-1 ms-auto">
-            <a class="col-sm-12 col-auto btn btn-outline-dark" href="">Añadir Registro</a>
+            <a class="col-sm-12 col-auto btn btn-outline-dark" href="{{route('cuadernos.registro')}}">Añadir Registro</a>
             <a class="col-sm-12  col-auto btn btn-outline-dark" href="{{ route('inicio') }}">Registrar Prestamo</a>
             <a class="col-sm-12  col-auto btn btn-outline-dark" href="">Cerrar Prestamo</a>
         </div>
@@ -35,7 +35,7 @@
                 <div class="col-auto">
                     <a href="{{ route('cuadernos.show', $item->clasificacion) }}" class="btn btn-outline-primary ">Ver</a>
                     <a href="{{ route('cuadernos.edit', $item->clasificacion) }}" class="btn btn-outline-success ">Editar</a>
-                    <a href="{{ route('cuadernos.edit', $item->clasificacion) }}" class="btn btn-outline-danger ">Eliminar</a>
+                    <a href="" class="btn btn-outline-danger ">Eliminar</a>
                 </div>
             </div>
         </div>

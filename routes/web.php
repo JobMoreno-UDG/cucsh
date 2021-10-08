@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('inicio');
+Route::get('/', function () {return view('welcome');})->name('inicio');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -28,9 +26,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 # Rutas de bibliografia Digital
 
-Route::get('bibliogarfia_digital',[BibliografiaDigitalController::class,'index'])->name('bibliografia_digital.index');
-Route::get('bibliogarfia_digital/{bibliogarfia}',[BibliografiaDigitalController::class,'show'])->name('bibliografia_digital.show');
-Route::get('bibliogarfia_digital/{bibliografia}/edit',[BibliografiaDigitalController::class, 'edit'])->name('bibliografia_digital.edit');
+Route::get('bibliografia_digital',[BibliografiaDigitalController::class,'index'])->name('bibliografia_digital.index');
+Route::get('bibliografia_digital/{bibliogarfia}',[BibliografiaDigitalController::class,'show'])->name('bibliografia_digital.show');
+Route::get('bibliografia_digital/{bibliografia}/edit',[BibliografiaDigitalController::class, 'edit'])->name('bibliografia_digital.edit');
+
+Route::get('bibliografia/registro',[BibliografiaDigitalController::class,'registro'])->name('bibliografia_digital.registro');
+Route::post('bibliografia/create',[BibliografiaDigitalController::class,'create'])->name('bibliografia_digital.create');
 
 # Rutas de Caudernos
 
@@ -38,6 +39,16 @@ Route::get('cuadernos',[CuadernosController::class,'index'])->name('cuadernos.in
 Route::get('cuadernos/{cuaderno}',[CuadernosController::class,'show'])->name('cuadernos.show');
 Route::get('cuadernos/{cuaderno}/edit',[CuadernosController::class,'edit'])->name('cuadernos.edit');
 
+Route::get('cuaderno/registro/',[CuadernosController::class,'registro'])->name('cuadernos.registro');
+Route::post('cuaderno/create',[CuadernosController::class,'create'])->name('cuadernos.create');
+
+/*
+Route::get('cuadernos/formulario_registro', array(
+    'as' => 'registro',
+    'middleware' => 'web',
+    'uses' => 'App\Http\Controllers\CuadernosController@store'
+));
+*/
 
 #Rutas Revistas
 
@@ -48,3 +59,5 @@ Route::get('revistas/{revista}/edit',[RevistasController::class,'show'])->name('
 #Rutas Libros
 
 Route::get('libros',[LibrosController::class,'index'])->name('libros.index');
+Route::get('libros/{libro}',[LibrosController::class,'show'])->name('libros.show');
+Route::get('libros/{libro}/edit',[LibrosController::class,'edit'])->name('libros.edit');

@@ -17,9 +17,9 @@ class CreateLibrosTable extends Migration
             $table->string('clasificacion',15)->unique();
             $table->string('titulo',60);
             $table->string('autor',50);
-            $table->year('anio');      
-            $table->string('tomo_numero',20);  
-            $table->string('editorial',25);    
+            $table->year('anio');
+            $table->string('tomo_numero',20);
+            $table->string('editorial',25);
             $table->string('lugar_publicacion',50);
             $table->integer('paginas')->default(0);
             $table->string('volumen',15);

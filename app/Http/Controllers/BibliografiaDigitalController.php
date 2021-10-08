@@ -11,12 +11,38 @@ class BibliografiaDigitalController extends Controller
         $bibliografia = BibliografiaDigital::paginate(5);
         return view('BibliografiaDigital.index',compact('bibliografia'));
     }
-    public function show($bibliografia){
-        $bibliografia = BibliografiaDigital::where('clasificacion',$bibliografia)->get();
+    public function show($clasificacion){
+        $bibliografia = BibliografiaDigital::where('clasificacion',$clasificacion)->get();
         return view('BibliografiaDigital.show',['bibliografia'=>$bibliografia[0]]);
     }
-    public function edit($bibliografia){
-        $bibliografia = BibliografiaDigital::where('clasificacion',$bibliografia)->get()[0];
+    public function edit($clasificacion){
+        $bibliografia = BibliografiaDigital::where('clasificacion',$clasificacion)->get()[0];
         return view('BibliografiaDigital.edit',compact('bibliografia'));
+    }
+
+    public function buscar(Request $clasificacion){
+        return $clasificacion;
+    }
+    
+    public function registro(){
+        return view('BibliografiaDigital.create');
+    }
+    public function create(Request $request){
+        $request->validate([
+            'titulo'=>'required',
+            'autor'=>'required',
+            'clasificacion'=>'required',
+            'anio'=>'required',
+        ]);
+
+        $bibliografia = new BibliografiaDigital();
+
+        $bibliografia->titulo = $request->titulo;
+        $bibliografia->autor = $request->autor;
+        $bibliografia->clasificacion = $request->clasificacion;
+        $bibliografia->anio = $request->anio;
+
+        $bibliografia->save();
+        return redirect()->route('bibliografia_digital.index');
     }
 }
