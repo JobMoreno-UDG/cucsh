@@ -61,11 +61,46 @@ class CuadernosController extends Controller
         $info->obtencion = $request->obtencion;
         $info->resguardo = $request->resguardo;
         $info->contenido = $request->contenido;
-        $info->codigo_barras = $request->codigo_barras;
+        $info->codigo_barras = $request->codigo_barras ?? 0;
         $info->inventario = $request->inventario;
-        $info->fecha_publicacion = $request->fecha_publicacion;
+        $info->fecha_publicacion = $request->fecha_publicacion ?? 0000;
         $cuaderno->save();
         $info->save();
+
+        return redirect()->route('cuadernos.index');
+
+    }
+    public function update(Request $request)
+    {
+        $request->validate([
+            'titulo' => 'required',
+            'clasificacion' => 'required',
+            'fecha_ingreso'=>'required',
+        ]);
+
+        Cuadernos::where('clasificacion',$request->clasificacion)->update(
+            ['clasificacion'=> $request->clasificacion,
+            'titulo'=>$request->titulo,
+            'autor'=>$request->autor ?? '',
+            'anio'=> $request->anio ?? 0000,
+            'editorial'=>$request->editorial ?? '',
+            'lugar_publicacion'=>$request->lugar_publicacion ?? '',
+            'volumen'=>$request->volumen ?? '','fecha_ingreso'=> $request->fecha_ingreso,
+            'situacion' => $request->situacion ?? '',
+            'tomo_numero'=>$request->tomo_numero ?? '',
+            'paginas'=> $request->paginas ?? 0,
+            'serie'=> $request->serie ?? '',
+            'isbn_issn'=>$request->isbn_issn ?? '']);
+
+        Informacion::where('clasificacion',$request->clasificacion)->update(
+            ['clasificacion'=> $request->clasificacion,
+            'obtencion'=>$request->obtencion ?? '',
+            'resguardo'=>$request->resguardo ?? '',
+            'contenido'=>$request->contenido ?? '',
+            'codigo_barras'=>$request->codigo_barras ?? 0,
+            'inventario'=>$request->inventario ?? '',
+            'fecha_publicacion'=>$request->fecha_publicacion ?? 0000]);
+
 
         return redirect()->route('cuadernos.index');
 

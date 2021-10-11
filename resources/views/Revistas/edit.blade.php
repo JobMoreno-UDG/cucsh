@@ -89,7 +89,7 @@
         <input class="form-control"  type="text" name="fecha_prestadoA" id="fecha_prestadoA" >
     </div>
     <div class="col-12 m-2 ">
-        <button type="submit" class="btn btn-warning col-sm-3">Actualizar</button>
+        <button type="submit" class="btn btn-outline-success col-sm-3">Actualizar</button>
         <a class="btn btn-dark col-sm-3" href="{{route('cuadernos.index')}}">Regresar</a>
     </div>
 </form>

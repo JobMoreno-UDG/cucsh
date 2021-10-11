@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class BibliografiaDigitalController extends Controller
 {
     public function index(){
-        $bibliografia = BibliografiaDigital::paginate(5);
+        $bibliografia = BibliografiaDigital::paginate(10);
         return view('BibliografiaDigital.index',compact('bibliografia'));
     }
     public function show($clasificacion){
@@ -23,7 +23,7 @@ class BibliografiaDigitalController extends Controller
     public function buscar(Request $clasificacion){
         return $clasificacion;
     }
-    
+
     public function registro(){
         return view('BibliografiaDigital.create');
     }
@@ -43,6 +43,19 @@ class BibliografiaDigitalController extends Controller
         $bibliografia->anio = $request->anio;
 
         $bibliografia->save();
+        return redirect()->route('bibliografia_digital.index');
+    }
+    public function update(Request $request){
+        $request->validate([
+            'titulo'=>'required',
+            'clasificacion'=>'required',
+        ]);
+        BibliografiaDigital::where('clasificacion',$request->clasificacion)->update(
+            ['clasificacion'=> $request->clasificacion,
+            'titulo'=>$request->titulo,
+            'autor'=>$request->autor,
+            'anio'=> $request->anio]);
+
         return redirect()->route('bibliografia_digital.index');
     }
 }

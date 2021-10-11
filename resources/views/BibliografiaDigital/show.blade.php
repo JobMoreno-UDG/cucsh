@@ -13,5 +13,5 @@
             <span><b>Año: </b> <br>{{ $bibliografia->anio }}</span>
         </div>
     </div>
-    <a href="{{route('bibliografia_digital.edit',$bibliografia->clasificacion)}}" class="btn btn-warning">Editar</a>
+    <a href="{{route('bibliografia_digital.edit',$bibliografia->clasificacion)}}" class="btn btn-outline-primary">Editar</a>
 @endsection()

@@ -18,10 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('welcome');})->name('inicio');
+#Route::get('/home', function () {return view('welcome');})->name('inicio');
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 # Rutas de bibliografia Digital
@@ -30,8 +30,9 @@ Route::get('bibliografia_digital',[BibliografiaDigitalController::class,'index']
 Route::get('bibliografia_digital/{bibliogarfia}',[BibliografiaDigitalController::class,'show'])->name('bibliografia_digital.show');
 Route::get('bibliografia_digital/{bibliografia}/edit',[BibliografiaDigitalController::class, 'edit'])->name('bibliografia_digital.edit');
 
-Route::get('bibliografia/registro',[BibliografiaDigitalController::class,'registro'])->name('bibliografia_digital.registro');
-Route::post('bibliografia/create',[BibliografiaDigitalController::class,'create'])->name('bibliografia_digital.create');
+Route::get('bibliografia_digital/registro',[BibliografiaDigitalController::class,'registro'])->name('bibliografia_digital.registro');
+Route::post('bibliografia_digital/create',[BibliografiaDigitalController::class,'create'])->name('bibliografia_digital.create');
+Route::post('bibliografia_digital/update',[BibliografiaDigitalController::class,'update'])->name('bibliografia_digital.update');
 
 # Rutas de Caudernos
 
@@ -41,6 +42,7 @@ Route::get('cuadernos/{cuaderno}/edit',[CuadernosController::class,'edit'])->nam
 
 Route::get('cuaderno/registro/',[CuadernosController::class,'registro'])->name('cuadernos.registro');
 Route::post('cuaderno/create',[CuadernosController::class,'create'])->name('cuadernos.create');
+Route::post('cuadernos/update',[BibliografiaDigitalController::class,'update'])->name('cuadernos.update');
 
 /*
 Route::get('cuadernos/formulario_registro', array(
@@ -61,3 +63,7 @@ Route::get('revistas/{revista}/edit',[RevistasController::class,'show'])->name('
 Route::get('libros',[LibrosController::class,'index'])->name('libros.index');
 Route::get('libros/{libro}',[LibrosController::class,'show'])->name('libros.show');
 Route::get('libros/{libro}/edit',[LibrosController::class,'edit'])->name('libros.edit');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

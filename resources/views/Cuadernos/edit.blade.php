@@ -2,7 +2,8 @@
 @section('titulo', 'Cuadernos')
 
 @section('content')
-<form action="" class="row justify-content-bettwen">
+<form action="{{route('cuadernos.update')}}" class="row justify-content-bettwen" method="POST">
+    @csrf
     <div class="col-auto">
         <label for="clasificacion" class="form-label">Clasificación</label>
         <input type="text" name="clasificacion" name="clasificacion" class="form-control" value="{{$cuaderno->clasificacion}}">
@@ -89,7 +90,7 @@
         <input class="form-control"  type="text" name="fecha_prestadoA" id="fecha_prestadoA" value="{{$info->fecha_prestadoA}}">
     </div>
     <div class="col-12 m-2 ">
-        <button type="submit" class="btn btn-warning col-sm-3">Actualizar</button>
+        <button type="submit" class="btn btn-outline-success col-sm-3">Actualizar</button>
         <a class="btn btn-dark col-sm-3" href="{{route('cuadernos.index')}}">Regresar</a>
     </div>
 </form>
