@@ -42,7 +42,7 @@ Route::get('cuadernos/{cuaderno}/edit',[CuadernosController::class,'edit'])->nam
 
 Route::get('cuaderno/registro/',[CuadernosController::class,'registro'])->name('cuadernos.registro');
 Route::post('cuaderno/create',[CuadernosController::class,'create'])->name('cuadernos.create');
-Route::post('cuadernos/update',[BibliografiaDigitalController::class,'update'])->name('cuadernos.update');
+Route::post('cuadernos/update',[CuadernosController::class,'update'])->name('cuadernos.update');
 
 /*
 Route::get('cuadernos/formulario_registro', array(

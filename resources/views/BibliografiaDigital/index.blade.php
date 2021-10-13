@@ -35,16 +35,18 @@
                         <span><b>Año: </b>{{ $item->anio }}</span>
                     </div>
                 </div>
-                @if (Auth::user()->rol == 'Administrador')
+
                     <div class="col-auto">
                         <a href="{{ route('bibliografia_digital.show', $item->clasificacion) }}"
                             class="btn btn-outline-primary ">Ver</a>
+                            @if (Auth::user()->rol == 'Administrador')
                         <a href="{{ route('bibliografia_digital.edit', $item->clasificacion) }}"
                             class="btn btn-outline-success ">Editar</a>
                         <a href="{{ route('bibliografia_digital.edit', $item->clasificacion) }}"
                             class="btn btn-outline-danger ">Eliminar</a>
+                            @endif
                     </div>
-                @endif
+
             </div>
         </div>
     @endforeach

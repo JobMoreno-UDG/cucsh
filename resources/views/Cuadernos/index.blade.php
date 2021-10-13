@@ -7,8 +7,18 @@
             <input type="text" class="form-control" id="buscar" name="buscar" placeholder="Buscar">
         </div>
         <div class="col-auto">
+            <select name="" id="" class="form-control">
+                <option value="">---</option>
+                <option value="">Autor</option>
+                <option value="">Titulo</option>
+                <option value="">Año</option>
+                <option value="">Clasificacion</option>
+            </select>
+        </div>
+        <div class="col-auto">
             <button type="submit" class="btn btn-dark mb-3">Buscar</button>
         </div>
+
         @if (Auth::user()->rol == 'Administrador')
             <div class="col-sm-12 col-md-5 m-1 ms-auto">
                 <a class="col-sm-12 col-auto btn btn-outline-dark" href="{{ route('cuadernos.registro') }}">Añadir
@@ -38,9 +48,11 @@
                 </div>
                 <div class="col-auto">
                     <a href="{{ route('cuadernos.show', $item->clasificacion) }}" class="btn btn-outline-primary ">Ver</a>
-                    <a href="{{ route('cuadernos.edit', $item->clasificacion) }}"
-                        class="btn btn-outline-success ">Editar</a>
-                    <a href="" class="btn btn-outline-danger ">Eliminar</a>
+                    @if (Auth::user()->rol == 'Administrador')
+                        <a href="{{ route('cuadernos.edit', $item->clasificacion) }}"
+                            class="btn btn-outline-success ">Editar</a>
+                        <a href="" class="btn btn-outline-danger ">Eliminar</a>
+                    @endif
                 </div>
             </div>
         </div>

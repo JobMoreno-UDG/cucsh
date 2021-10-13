@@ -77,7 +77,7 @@ class CuadernosController extends Controller
             'clasificacion' => 'required',
             'fecha_ingreso'=>'required',
         ]);
-
+        return $request;
         Cuadernos::where('clasificacion',$request->clasificacion)->update(
             ['clasificacion'=> $request->clasificacion,
             'titulo'=>$request->titulo,
@@ -102,7 +102,7 @@ class CuadernosController extends Controller
             'fecha_publicacion'=>$request->fecha_publicacion ?? 0000]);
 
 
-        return redirect()->route('cuadernos.index');
+        #return redirect()->route('cuadernos.index');
 
     }
 }

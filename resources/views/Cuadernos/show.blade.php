@@ -24,7 +24,7 @@
             <span><b>Volumen: </b><br>{{ $cuaderno->volumen }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
-            <span><b>Fecha de Ingreso: </b> <br>{{ $cuaderno->fecha_ingreso}}</span>
+            <span><b>Fecha de Ingreso: </b> <br>{{ $cuaderno->fecha_ingreso }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
             <span><b>Situación: </b> <br>{{ $cuaderno->situacion }}</span>
@@ -38,37 +38,40 @@
             <span><b>Páginas: </b><br>{{ $cuaderno->paginas }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
-            <span><b>Serie: </b> <br>{{ $cuaderno->serie}}</span>
+            <span><b>Serie: </b> <br>{{ $cuaderno->serie }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
             <span><b>ISBN o ISSN: </b> <br>{{ $cuaderno->isbn_issn }}</span>
         </div>
     </div>
-<hr>
-<div class="row">
-    <div class="col-sm-12 col-md-3">
-        <span><b>Obtencion: </b><br>{{ $info->obtencion }}</span>
+    <hr>
+    <div class="row">
+        <div class="col-sm-12 col-md-3">
+            <span><b>Obtencion: </b><br>{{ $info->obtencion }}</span>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <span><b>Resguardo: </b> <br>{{ $info->resguardo }}</span>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <span><b>Contenido: </b> <br>{{ $info->contenido }}</span>
+        </div>
     </div>
-    <div class="col-sm-12 col-md-3">
-        <span><b>Resguardo: </b> <br>{{ $info->resguardo}}</span>
+    <div class="row">
+        <div class="col-sm-12 col-md-3">
+            <span><b>Código de Barras: </b><br>{{ $info->codigo_barras }}</span>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <span><b>Inventario: </b> <br>{{ $info->inventario }}</span>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <span><b>Fecha Publicación: </b> <br>{{ $info->fecha_publicacion }}</span>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <span><b>Fecha Ingreso: </b><br> {{ $cuaderno->fecha_ingreso }}</span>
+        </div>
     </div>
-    <div class="col-sm-12 col-md-3">
-        <span><b>Contenido: </b> <br>{{ $info->contenido }}</span>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-12 col-md-3">
-        <span><b>Código de Barras: </b><br>{{ $info->codigo_barras }}</span>
-    </div>
-    <div class="col-sm-12 col-md-3">
-        <span><b>Inventario: </b> <br>{{ $info->inventario}}</span>
-    </div>
-    <div class="col-sm-12 col-md-3">
-        <span><b>Fecha Publicación: </b> <br>{{ $info->fecha_publicacion }}</span>
-    </div>
-    <div class="col-sm-12 col-md-3">
-        <span><b>Fecha Ingreso: </b><br> {{ $cuaderno->fecha_ingreso }}</span>
-    </div>
-</div>
-<a href="{{route('cuadernos.edit',['cuaderno' => $cuaderno->clasificacion])}}" class="btn btn-warning">Editar</a>
+    @if (Auth::user()->rol == 'Administrador')
+        <a href="{{ route('cuadernos.edit', ['cuaderno' => $cuaderno->clasificacion]) }}" class="btn btn-warning">Editar</a>
+    @endif
+    <a class="btn btn-dark col-sm-3" href="{{route('cuadernos.index')}}">Regresar</a>
 @endsection()
