@@ -14,7 +14,7 @@ class CreateLibrosTable extends Migration
     public function up()
     {
         Schema::create('libros', function (Blueprint $table) {
-            $table->string('clasificacion',15)->unique();
+            $table->string('clasificacion',40)->unique();
             $table->string('titulo',60);
             $table->string('autor',50);
             $table->year('anio');
@@ -25,7 +25,7 @@ class CreateLibrosTable extends Migration
             $table->string('volumen',15);
             $table->string('serie',40);
             $table->string('isbn_issn',25);
-            $table->dateTime('fecha_ingreso');
+            $table->date('fecha_ingreso');
             $table->string('situacion',25);
             $table->softDeletes();
             $table->timestamps();

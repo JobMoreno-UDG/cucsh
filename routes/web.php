@@ -4,6 +4,7 @@ use App\Http\Controllers\BibliografiaDigitalController;
 use App\Http\Controllers\CuadernosController;
 use App\Http\Controllers\RevistasController;
 use App\Http\Controllers\LibrosController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,21 +19,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-#Route::get('/home', function () {return view('welcome');})->name('inicio');
-
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 # Rutas de bibliografia Digital
 
 Route::get('bibliografia_digital',[BibliografiaDigitalController::class,'index'])->name('bibliografia_digital.index');
-Route::get('bibliografia_digital/{bibliogarfia}',[BibliografiaDigitalController::class,'show'])->name('bibliografia_digital.show');
+
 Route::get('bibliografia_digital/{bibliografia}/edit',[BibliografiaDigitalController::class, 'edit'])->name('bibliografia_digital.edit');
 
-Route::get('bibliografia_digital/registro',[BibliografiaDigitalController::class,'registro'])->name('bibliografia_digital.registro');
+Route::get('bibliografia/registro',[BibliografiaDigitalController::class,'registro'])->name('bibliografia_digital.registro');
 Route::post('bibliografia_digital/create',[BibliografiaDigitalController::class,'create'])->name('bibliografia_digital.create');
 Route::post('bibliografia_digital/update',[BibliografiaDigitalController::class,'update'])->name('bibliografia_digital.update');
+
+Route::get('bibliografia/{bibliografia}/delete',[BibliografiaDigitalController::class,'delete'])->name('bibliografia_digital.delete');
+
+Route::get('bibliografia_digital/{bibliogarfia}',[BibliografiaDigitalController::class,'show'])->name('bibliografia_digital.show');
 
 # Rutas de Caudernos
 
@@ -43,7 +46,7 @@ Route::get('cuadernos/{cuaderno}/edit',[CuadernosController::class,'edit'])->nam
 Route::get('cuaderno/registro/',[CuadernosController::class,'registro'])->name('cuadernos.registro');
 Route::post('cuaderno/create',[CuadernosController::class,'create'])->name('cuadernos.create');
 Route::post('cuadernos/update',[CuadernosController::class,'update'])->name('cuadernos.update');
-
+Route::get('cuadernos/{cuaderno}/delete',[CuadernosController::class,'delete'])->name('cuadernos.delete');
 /*
 Route::get('cuadernos/formulario_registro', array(
     'as' => 'registro',
@@ -58,12 +61,26 @@ Route::get('revistas',[RevistasController::class,'index'])->name('revistas.index
 Route::get('revistas/{revista}',[RevistasController::class,'show'])->name('revistas.show');
 Route::get('revistas/{revista}/edit',[RevistasController::class,'show'])->name('revistas.edit');
 
+
+Route::get('revista/registro',[RevistasController::class,'registro'])->name('revistas.registro');
+Route::get('revistas/create',[RevistasController::class,'create'])->name('revistas.create');
+Route::get('revistas/{revista}/delete',[RevistasController::class,'delete'])->name('revistas.delete');
+
+
 #Rutas Libros
 
 Route::get('libros',[LibrosController::class,'index'])->name('libros.index');
 Route::get('libros/{libro}',[LibrosController::class,'show'])->name('libros.show');
 Route::get('libros/{libro}/edit',[LibrosController::class,'edit'])->name('libros.edit');
 
+Route::get('libro/registro',[LibrosController::class,'registro'])->name('libro.registro');
+Route::post('libros/create',[LibrosController::class,'create'])->name('libros.create');
+Route::post('libros/update',[LibrosController::class,'update'])->name('libros.update');
+Route::get('libros/{libro}/delete',[LibrosController::class,'edit'])->name('libros.delete');
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+# Registro usuarios
+
+Route::get('usuarios/registro',[UserController::class,'registro'])->name('usuario.registro');
+Route::post('usuarios/create',[UserController::class,'create'])->name('usuario.create');

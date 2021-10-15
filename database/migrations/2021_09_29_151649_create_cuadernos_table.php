@@ -14,13 +14,13 @@ class CreateCuadernosTable extends Migration
     public function up()
     {
         Schema::create('cuadernos', function (Blueprint $table) {
-            $table->string('clasificacion',15)->unique();
+            $table->string('clasificacion',40)->unique();
             $table->string('titulo',100);
             $table->year('anio');
             $table->string('editorial',50);
             $table->string('lugar_publicacion',50);
             $table->string('volumen',15);
-            $table->dateTime('fecha_ingreso');
+            $table->date('fecha_ingreso');
             $table->string('situacion',15);
             $table->string('autor',50);
             $table->string('tomo_numero',15);

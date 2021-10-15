@@ -49,7 +49,7 @@ class CuadernosController extends Controller
         $cuaderno->editorial = $request->editorial ?? '';
         $cuaderno->lugar_publicacion = $request->lugar_publicacion ?? '';
         $cuaderno->volumen = $request->volumen ?? '';
-        $cuaderno->fecha_ingreso = $request->fecha_ingreso;
+        $cuaderno->fecha_ingreso = str_replace(' 00:00:00', '',$request->fecha_ingreso);
         $cuaderno->situacion = $request->situacion ?? '';
         $cuaderno->tomo_numero = $request->tomo_numero ?? '';
         $cuaderno->paginas = $request->paginas ?? 0;
@@ -58,12 +58,13 @@ class CuadernosController extends Controller
 
         $info->clasificacion = $request->clasificacion;
         $info->tipo = 'Cuaderno';
-        $info->obtencion = $request->obtencion;
-        $info->resguardo = $request->resguardo;
-        $info->contenido = $request->contenido;
+        $info->obtencion = $request->obtencion ?? '';
+        $info->resguardo = $request->resguardo ?? '';
+        $info->contenido = $request->contenido ?? '';
         $info->codigo_barras = $request->codigo_barras ?? 0;
-        $info->inventario = $request->inventario;
+        $info->inventario = $request->inventario ?? '';
         $info->fecha_publicacion = $request->fecha_publicacion ?? 0000;
+
         $cuaderno->save();
         $info->save();
 
@@ -77,7 +78,6 @@ class CuadernosController extends Controller
             'clasificacion' => 'required',
             'fecha_ingreso'=>'required',
         ]);
-        return $request;
         Cuadernos::where('clasificacion',$request->clasificacion)->update(
             ['clasificacion'=> $request->clasificacion,
             'titulo'=>$request->titulo,
@@ -85,7 +85,8 @@ class CuadernosController extends Controller
             'anio'=> $request->anio ?? 0000,
             'editorial'=>$request->editorial ?? '',
             'lugar_publicacion'=>$request->lugar_publicacion ?? '',
-            'volumen'=>$request->volumen ?? '','fecha_ingreso'=> $request->fecha_ingreso,
+            'volumen'=>$request->volumen ?? '',
+            'fecha_ingreso'=> $request->fecha_ingreso,
             'situacion' => $request->situacion ?? '',
             'tomo_numero'=>$request->tomo_numero ?? '',
             'paginas'=> $request->paginas ?? 0,
@@ -102,7 +103,12 @@ class CuadernosController extends Controller
             'fecha_publicacion'=>$request->fecha_publicacion ?? 0000]);
 
 
-        #return redirect()->route('cuadernos.index');
+        return redirect()->route('cuadernos.index');
 
+    }
+
+    public function delete($clasificacion){
+        Cuadernos::where('clasificacion',$clasificacion)->delete();
+        return redirect()->route('cuadernos.index');
     }
 }

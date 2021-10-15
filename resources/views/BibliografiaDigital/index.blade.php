@@ -35,17 +35,17 @@
                         <span><b>Año: </b>{{ $item->anio }}</span>
                     </div>
                 </div>
-
-                    <div class="col-auto">
-                        <a href="{{ route('bibliografia_digital.show', $item->clasificacion) }}"
-                            class="btn btn-outline-primary ">Ver</a>
-                            @if (Auth::user()->rol == 'Administrador')
+                <br/>
+                <div class="col-auto">
+                    <a href="{{ route('bibliografia_digital.show', $item->clasificacion) }}"
+                        class="btn btn-outline-primary col-sm-2">Ver</a>
+                    @if (Auth::user()->rol == 'Administrador')
                         <a href="{{ route('bibliografia_digital.edit', $item->clasificacion) }}"
-                            class="btn btn-outline-success ">Editar</a>
-                        <a href="{{ route('bibliografia_digital.edit', $item->clasificacion) }}"
-                            class="btn btn-outline-danger ">Eliminar</a>
-                            @endif
-                    </div>
+                            class="btn btn-outline-success col-sm-2">Editar</a>
+                        <a href="{{ route('bibliografia_digital.delete', $item->clasificacion) }}"
+                            class="btn btn-outline-danger col-sm-2">Eliminar</a>
+                    @endif
+                </div>
 
             </div>
         </div>

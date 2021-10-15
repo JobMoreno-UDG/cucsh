@@ -47,11 +47,11 @@
                     </div>
                 </div>
                 <div class="col-auto">
-                    <a href="{{ route('cuadernos.show', $item->clasificacion) }}" class="btn btn-outline-primary ">Ver</a>
+                    <a href="{{ route('cuadernos.show', $item->clasificacion) }}" class="btn btn-outline-primary col-sm-2">Ver</a>
                     @if (Auth::user()->rol == 'Administrador')
                         <a href="{{ route('cuadernos.edit', $item->clasificacion) }}"
-                            class="btn btn-outline-success ">Editar</a>
-                        <a href="" class="btn btn-outline-danger ">Eliminar</a>
+                            class="btn btn-outline-success col-sm-2">Editar</a>
+                        <a href="{{ route('cuadernos.delete', $item->clasificacion) }}" class="btn btn-outline-danger col-sm-2">Eliminar</a>
                     @endif
                 </div>
             </div>

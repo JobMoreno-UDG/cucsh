@@ -80,11 +80,6 @@
         <label for="contenido" class="form-label">Contenido</label>
         <textarea class="form-control" name="contenido"></textarea>
     </div>
-
-    <div class="col-auto">
-        <label for="prestadoA" class="form-label">Prestado A</label>
-        <input class="form-control"  type="text" name="prestadoA" id="prestadoA" >
-    </div>
     <div class="col-auto">
         <label for="inventario" class="form-label">Inventario</label>
         <input class="form-control"  type="text" name="inventario" id="inventario" >

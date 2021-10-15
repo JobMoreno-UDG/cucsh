@@ -15,7 +15,7 @@ class CreatePrestamosTable extends Migration
     {
         Schema::create('prestamos', function (Blueprint $table) {
             $table->id();
-            $table->string('clasificacion')->unique();
+            $table->string('clasificacion',40)->unique();
             $table->string('tipo');
             $table->year('fecha_prestamo');
             $table->year('fecha_entrega');

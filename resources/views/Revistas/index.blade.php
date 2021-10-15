@@ -13,7 +13,7 @@
         </div>
         @if (Auth::user()->rol == 'Administrador')
             <div class="col-sm-12 col-md-5 m-1 ms-auto">
-                <a class="col-sm-12 col-auto btn btn-outline-dark" href="">Añadir Registro</a>
+                <a class="col-sm-12 col-auto btn btn-outline-dark" href="{{route('revistas.registro')}}">Añadir Registro</a>
                 <a class="col-sm-12  col-auto btn btn-outline-dark" href="">Registrar Prestamo</a>
                 <a class="col-sm-12  col-auto btn btn-outline-dark" href="">Cerrar Prestamo</a>
             </div>

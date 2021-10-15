@@ -83,15 +83,15 @@
     </div>
     <div class="col-auto">
         <label for="fecha_publicacion" class="form-label">Fecha Publicación</label>
-        <input class="form-control"  type="text" name="fecha_publicacion" id="fecha_publicacion" value="{{$info->fecha_publicacion}}">
+        <input class="form-control"  type="date" name="fecha_publicacion" id="fecha_publicacion" value="{{$info->fecha_publicacion}}">
     </div>
     <div class="col-auto">
-        <label for="fecha_prestadoA" class="form-label">Fecha Prestado A</label>
-        <input class="form-control"  type="text" name="fecha_prestadoA" id="fecha_prestadoA" value="{{$info->fecha_prestadoA}}">
+        <label for="fecha_prestadoA" class="form-label">Fecha Ingreso</label>
+        <input class="form-control"  type="date" name="fecha_ingreso" id="fecha_ingreso" value="{{str_replace(' 00:00:00', '',$cuaderno->fecha_ingreso)}}">
     </div>
     <div class="col-12 m-2 ">
         <button type="submit" class="btn btn-outline-success col-sm-3">Actualizar</button>
-        <a class="btn btn-dark col-sm-3" href="{{route('cuadernos.index')}}">Regresar</a>
+        <a class="btn btn-outline-dark col-sm-3" href="{{route('cuadernos.index')}}">Regresar</a>
     </div>
 </form>
 @endsection

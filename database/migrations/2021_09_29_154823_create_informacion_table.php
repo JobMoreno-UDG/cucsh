@@ -14,14 +14,15 @@ class CreateInformacionTable extends Migration
     public function up()
     {
         Schema::create('informacion', function (Blueprint $table) {
-            $table->string('clasificacion',15)->unique();
+            $table->string('clasificacion',40)->unique();
             $table->string('tipo',20);
             $table->string('obtencion',50);
             $table->string('resguardo',50);
             $table->text('contenido');
-            $table->integer('codigo_barras')->default(0);
+            $table->string('codigo_barras')->default('0');
             $table->string('inventario',20);
-            $table->dateTime('fecha_publicacion');
+            $table->year('fecha_publicacion');
+            $table->string('space');
             $table->softDeletes();
             $table->timestamps();
         });

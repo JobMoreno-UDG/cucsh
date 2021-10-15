@@ -13,10 +13,11 @@
             <span><b>Año: </b> <br>{{ $bibliografia->anio }}</span>
         </div>
     </div>
+    <br>
     @if (Auth::user()->rol == 'Administrador')
         <a href="{{ route('bibliografia_digital.edit', $bibliografia->clasificacion) }}"
-            class="btn btn-outline-primary">Editar</a>
+            class="btn btn-outline-primary col-sm-2">Editar</a>
     @endif
-    <a class="btn btn-outline-dark col-sm-3"
+    <a class="btn btn-outline-dark col-sm-2"
                 href="{{ route('bibliografia_digital.index', $bibliografia->clasificacion) }}">Regresar</a>
 @endsection()

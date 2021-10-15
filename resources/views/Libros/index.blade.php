@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('titulo', 'Cuadernos')
+@section('titulo', 'Libros')
 
 @section('content')
     <form class="row g-3 justify-content-justify">
@@ -12,7 +12,7 @@
         @if (Auth::user()->rol == 'Administrador')
         <div class="col-sm-12 col-md-5 m-1 ms-auto">
 
-            <a class="col-sm-12 col-auto btn btn-outline-dark" href="">Añadir Registro</a>
+            <a class="col-sm-12 col-auto btn btn-outline-dark" href="{{route('libro.registro')}}">Añadir Registro</a>
             <a class="col-sm-12  col-auto btn btn-outline-dark" href="">Registrar Prestamo</a>
             <a class="col-sm-12  col-auto btn btn-outline-dark" href="">Cerrar Prestamo</a>
         </div>
@@ -36,9 +36,9 @@
                     </div>
                 </div>
                 <div class="col-auto">
-                    <a href="{{ route('libros.show', $item->clasificacion) }}" class="btn btn-outline-primary ">Ver</a>
-                    <a href="{{ route('libros.edit', $item->clasificacion) }}" class="btn btn-outline-success ">Editar</a>
-                    <a href="{{ route('libros.edit', $item->clasificacion) }}" class="btn btn-outline-danger ">Eliminar</a>
+                    <a href="{{ route('libros.show', $item->clasificacion) }}" class="btn btn-outline-primary col-2">Ver</a>
+                    <a href="{{ route('libros.edit', $item->clasificacion) }}" class="btn btn-outline-success col-2">Editar</a>
+                    <a href="{{ route('libros.edit', $item->clasificacion) }}" class="btn btn-outline-danger col-2">Eliminar</a>
                 </div>
 
             </div>

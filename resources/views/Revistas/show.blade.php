@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('titulo', 'Revistas')
+@section('titulo', '{{ $revista->clasificacion }}')
 
 @section('content')
     <div class="row">

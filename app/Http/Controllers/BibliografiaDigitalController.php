@@ -58,4 +58,9 @@ class BibliografiaDigitalController extends Controller
 
         return redirect()->route('bibliografia_digital.index');
     }
+
+    public function delete($clasificacion){
+        BibliografiaDigital::where('clasificacion',$clasificacion)->delete();
+        return redirect()->route('bibliografia_digital.index');
+    }
 }

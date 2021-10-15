@@ -17,4 +17,7 @@ class RevistasController extends Controller
         $revista = Revistas::where('clasificacion',$revista)->get()[0];
         return view('Revistas.show',compact('revista','info'));
     }
+    public function registro(){
+        return view('Revistas.create');
+    }
 }

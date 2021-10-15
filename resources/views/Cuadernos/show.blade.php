@@ -24,7 +24,7 @@
             <span><b>Volumen: </b><br>{{ $cuaderno->volumen }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
-            <span><b>Fecha de Ingreso: </b> <br>{{ $cuaderno->fecha_ingreso }}</span>
+            <span><b>Fecha de Ingreso: </b> <br>{{ str_replace(' 00:00:00', '',$cuaderno->fecha_ingreso) }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
             <span><b>Situación: </b> <br>{{ $cuaderno->situacion }}</span>
@@ -64,14 +64,12 @@
             <span><b>Inventario: </b> <br>{{ $info->inventario }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
-            <span><b>Fecha Publicación: </b> <br>{{ $info->fecha_publicacion }}</span>
-        </div>
-        <div class="col-sm-12 col-md-3">
-            <span><b>Fecha Ingreso: </b><br> {{ $cuaderno->fecha_ingreso }}</span>
+            <span><b>Fecha Publicación: </b> <br>{{ ($info->fecha_publicacion == 0 ) ? 'Desconocida' : str_replace(' 00:00:00', '',$info->fecha_publicacion); }}</span>
         </div>
     </div>
     @if (Auth::user()->rol == 'Administrador')
-        <a href="{{ route('cuadernos.edit', ['cuaderno' => $cuaderno->clasificacion]) }}" class="btn btn-warning">Editar</a>
+        <a href="{{ route('cuadernos.edit', ['cuaderno' => $cuaderno->clasificacion]) }}"
+            class="btn btn-outline-primary col-sm-3">Editar</a>
     @endif
-    <a class="btn btn-dark col-sm-3" href="{{route('cuadernos.index')}}">Regresar</a>
+    <a class="btn btn-outline-dark col-sm-3" href="{{ route('cuadernos.index') }}">Regresar</a>
 @endsection()

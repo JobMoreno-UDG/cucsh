@@ -14,10 +14,10 @@ class CreateBibliografiaDigitalTable extends Migration
     public function up()
     {
         Schema::create('bibliografia_digital', function (Blueprint $table) {
-            $table->string('clasificacion',15)->unique();
+            $table->string('clasificacion',40)->unique();
             $table->string('titulo',60);
             $table->string('autor',50);
-            $table->year('anio');
+            $table->bigInteger('anio');
             $table->softDeletes();
             $table->timestamps();
         });
