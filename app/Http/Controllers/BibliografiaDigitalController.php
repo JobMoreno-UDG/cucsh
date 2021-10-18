@@ -20,10 +20,6 @@ class BibliografiaDigitalController extends Controller
         return view('BibliografiaDigital.edit',compact('bibliografia'));
     }
 
-    public function buscar(Request $clasificacion){
-        return $clasificacion;
-    }
-
     public function registro(){
         return view('BibliografiaDigital.create');
     }
@@ -62,5 +58,15 @@ class BibliografiaDigitalController extends Controller
     public function delete($clasificacion){
         BibliografiaDigital::where('clasificacion',$clasificacion)->delete();
         return redirect()->route('bibliografia_digital.index');
+    }
+
+    public function buscar(Request $request){
+        $request->validate([
+            'buscar' => 'required',
+            'buscar_por' => 'required',
+        ]);
+
+        $bibliografia = BibliografiaDigital::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->paginate(10);
+        return view('BibliografiaDigital.buscar',compact('bibliografia'));
     }
 }

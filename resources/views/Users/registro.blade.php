@@ -23,9 +23,9 @@
     <div class="col-12">
         <label for="" class="form-label">Tipo</label>
         <select name="tipo" id="" class="form-control">
-            <option value="General">General</option>
-            <option value="Trabajador UdG">Trabajador UdG</option>
-            <option value="Administrador">Administrador</option>
+            <option value="0">General</option>
+            <option value="1">Trabajador UdG</option>
+            <option value="2">Administrador</option>
         </select>
     </div>
     <div class="col-12 m-2 ">

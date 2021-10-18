@@ -17,7 +17,7 @@ class CreateRevistasTable extends Migration
             $table->string('clasificacion',15)->unique();
             $table->string('titulo',100);
             $table->string('autor',50);
-            $table->year('anio');
+            $table->integer('anio');
             $table->string('tomo_numero',15);
             $table->string('editorial',50);
             $table->string('lugar_publicacion',50);
@@ -25,7 +25,7 @@ class CreateRevistasTable extends Migration
             $table->string('volumen',10);
             $table->string('serie',20);
             $table->string('isbn_issn',25);
-            $table->dateTime('fecha_ingreso');
+            $table->date('fecha_ingreso');
             $table->string('situacion',15);
             $table->string('space',20);
             $table->string('space2',20);

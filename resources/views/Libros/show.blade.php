@@ -43,39 +43,41 @@
         <div class="col-sm-12 col-md-3">
             <span><b>ISBN o ISSN: </b> <br>{{($libro->isbn_issn == '') ?'-' : $libro->isbn_issn }}</span>
         </div>
+        <div class="col-sm-12 col-md-3">
+            <span><b>Space: </b><br>{{($libro->space == '') ?'-' :  $info->space }}</span>
+        </div>
     </div>
     <hr>
 
     <div class="row">
         <div class="col-sm-12 col-md-3">
-            <span><b>Donación: </b><br>{{($libro->obtencion == '') ?'-' : $info->obtencion }}</span>
+            <span><b>Donación: </b><br>{{($info->obtencion == '') ?'-' : $info->obtencion }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
-            <span><b>Resguardo: </b> <br>{{($libro->resguardo == '') ?'-' : $info->resguardo }}</span>
+            <span><b>Resguardo: </b> <br>{{($info->resguardo == '') ?'-' : $info->resguardo }}</span>
         </div>
-        <div class="col-sm-12 col-md-3">
-            <span><b>Space: </b><br>{{($libro->space == '') ?'-' :  $info->space }}</span>
-        </div>
-
     </div>
     <div class="row">
         <div class="col-sm-12 col-md-3">
-            <span><b>Código de barras: </b><br>{{($libro->codigo_barras == '') ?'-' :$info->codigo_barras }}</span>
+            <span><b>Código de barras: </b><br>{{($info->codigo_barras == '') ?'-' :$info->codigo_barras }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
-            <span><b>Inventario: </b> <br>{{($libro->inventario == '') ?'-' : $info->inventario }}</span>
+            <span><b>Inventario: </b> <br>{{($info->inventario == '') ?'-' : $info->inventario }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
-            <span><b>Fecha Publicación: </b> <br>{{($libro->fecha_publicacion == '') ?'-' : $info->fecha_publicacion }}</span>
+            <span><b>Fecha Publicación: </b> <br>{{($info->fecha_publicacion == '') ?'-' : $info->fecha_publicacion }}</span>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <span><b>Contenido: </b> <br>{{($libro->contenido == '') ?'-' :$info->contenido }}</span>
+            <span><b>Contenido: </b> <br>{{($info->contenido == '') ?'-' :$info->contenido }}</span>
         </div>
     </div>
 
 <br/>
-    <a href="{{ route('libros.edit', ['libro' => $libro->clasificacion]) }}"
-        class="btn btn-outline-success col-2">Editar</a>
+@if (Auth::user()->rol == '2')
+<a href="{{ route('libros.edit', ['libro' => $libro->clasificacion]) }}"
+    class="btn btn-outline-success col-2">Editar</a>
+@endif
+<a href="{{route('libros.index')}}" class="btn btn-outline-dark col-2">Regresar</a>
 @endsection()

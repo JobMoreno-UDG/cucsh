@@ -2,7 +2,8 @@
 @section('titulo', 'Registro - Revista')
 
 @section('content')
-<form action="" class="row justify-content-bettwen">
+<form class="row justify-content-bettwen" method="POST" action="{{route('revistas.create')}}">
+    @csrf
     <div class="col-auto">
         <label for="clasificacion" class="form-label">Clasificación</label>
         <input type="text" name="clasificacion" name="clasificacion" class="form-control">
@@ -71,22 +72,25 @@
         <label for="contenido" class="form-label">Contenido</label>
         <textarea class="form-control" name="contenido"></textarea>
     </div>
-
-    <div class="col-auto">
-        <label for="prestadoA" class="form-label">Prestado A</label>
-        <input class="form-control"  type="text" name="prestadoA" id="prestadoA" >
-    </div>
     <div class="col-auto">
         <label for="inventario" class="form-label">Inventario</label>
         <input class="form-control"  type="text" name="inventario" id="inventario" >
     </div>
     <div class="col-auto">
-        <label for="fecha_publicacion" class="form-label">Fecha Publicación</label>
-        <input class="form-control"  type="text" name="fecha_publicacion" id="fecha_publicacion">
+        <label for="space" class="form-label">Space</label>
+        <input class="form-control"  type="text" name="space" id="space">
     </div>
     <div class="col-auto">
-        <label for="fecha_prestadoA" class="form-label">Fecha Prestado A</label>
-        <input class="form-control"  type="text" name="fecha_prestadoA" id="fecha_prestadoA" >
+        <label for="space2" class="form-label">Sapce 2</label>
+        <input class="form-control"  type="text" name="space2" id="space2">
+    </div>
+    <div class="col-auto">
+        <label for="fecha_publicacion" class="form-label">Fecha Publicación</label>
+        <input class="form-control"  type="date" name="fecha_publicacion" id="fecha_publicacion">
+    </div>
+    <div class="col-auto">
+        <label for="fecha_ingreso" class="form-label">Fecha Ingreso</label>
+        <input class="form-control"  type="date" name="fecha_ingreso" id="fecha_ingreso" >
     </div>
     <div class="col-12 m-2 ">
         <button type="submit" class="btn btn-success col-sm-3">Registrar</button>

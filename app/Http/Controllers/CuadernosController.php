@@ -10,7 +10,7 @@ class CuadernosController extends Controller
 {
     public function index()
     {
-        $cuadernos = Cuadernos::paginate(5);
+        $cuadernos = Cuadernos::paginate(10);
         return view('Cuadernos.index', compact('cuadernos'));
     }
 
@@ -63,7 +63,7 @@ class CuadernosController extends Controller
         $info->contenido = $request->contenido ?? '';
         $info->codigo_barras = $request->codigo_barras ?? 0;
         $info->inventario = $request->inventario ?? '';
-        $info->fecha_publicacion = $request->fecha_publicacion ?? 0000;
+        $info->fecha_publicacion = $request->fecha_publicacion;
 
         $cuaderno->save();
         $info->save();
@@ -71,14 +71,16 @@ class CuadernosController extends Controller
         return redirect()->route('cuadernos.index');
 
     }
-    public function update(Request $request)
+    public function update(Request $request,$viejo)
     {
         $request->validate([
             'titulo' => 'required',
             'clasificacion' => 'required',
             'fecha_ingreso'=>'required',
         ]);
-        Cuadernos::where('clasificacion',$request->clasificacion)->update(
+
+
+        Cuadernos::where('clasificacion',$request->viejo)->update(
             ['clasificacion'=> $request->clasificacion,
             'titulo'=>$request->titulo,
             'autor'=>$request->autor ?? '',
@@ -93,6 +95,7 @@ class CuadernosController extends Controller
             'serie'=> $request->serie ?? '',
             'isbn_issn'=>$request->isbn_issn ?? '']);
 
+
         Informacion::where('clasificacion',$request->clasificacion)->update(
             ['clasificacion'=> $request->clasificacion,
             'obtencion'=>$request->obtencion ?? '',
@@ -100,7 +103,7 @@ class CuadernosController extends Controller
             'contenido'=>$request->contenido ?? '',
             'codigo_barras'=>$request->codigo_barras ?? 0,
             'inventario'=>$request->inventario ?? '',
-            'fecha_publicacion'=>$request->fecha_publicacion ?? 0000]);
+            'fecha_publicacion'=>$request->fecha_publicacion]);
 
 
         return redirect()->route('cuadernos.index');
@@ -110,5 +113,15 @@ class CuadernosController extends Controller
     public function delete($clasificacion){
         Cuadernos::where('clasificacion',$clasificacion)->delete();
         return redirect()->route('cuadernos.index');
+    }
+
+    public function buscar(Request $request){
+        $request->validate([
+            'buscar' => 'required',
+            'buscar_por' => 'required',
+        ]);
+
+        $cuadernos = Cuadernos::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->paginate(10);
+        return view('Cuadernos.busqueda',compact('cuadernos'));
     }
 }

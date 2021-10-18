@@ -17,7 +17,7 @@ class CreateBibliografiaDigitalTable extends Migration
             $table->string('clasificacion',40)->unique();
             $table->string('titulo',60);
             $table->string('autor',50);
-            $table->bigInteger('anio');
+            $table->integer('anio');
             $table->softDeletes();
             $table->timestamps();
         });

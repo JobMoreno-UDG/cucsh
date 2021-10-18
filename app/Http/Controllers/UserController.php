@@ -13,20 +13,17 @@ class UserController extends Controller
     }
 
     public function create(Request $request){
-        #return $request;
         $request->validate([
             'nombre'=>'required',
             'correo'=>'required|email',
-            'contraseña'=>'required',
+            'contraseña'=>'required|min:8',
             'tipo'=>'required',
         ]);
-        User::create([
+        return User::create([
             'name' => $request->nombre,
+            'email' =>$request->correo,
+            'password' => Hash::make($request->contraseña),
             'rol'=>$request->tipo,
-            'email' => $request->correo,
-            'password' => Hash::make($request->password),
         ]);
-        
-        return redirect()->route('home');
     }
 }

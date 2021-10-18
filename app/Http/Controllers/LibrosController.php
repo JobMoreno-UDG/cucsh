@@ -59,13 +59,25 @@ class LibrosController extends Controller
         $info->contenido = $request->contenido ?? '';
         $info->codigo_barras = $request->codigo_barras ?? 0;
         $info->inventario = $request->inventario ?? '';
-        $info->space  = $request->space ?? '';
-        $info->fecha_publicacion = $request->fecha_publicacion ?? 0000;
+        $info->fecha_publicacion = $request->fecha_publicacion;
 
         $libro->save();
         $info->save();
 
         return redirect()->route('libros.index');
 
+    }
+    public function delete($clasificacion){
+        Libros::where('clasificacion',$clasificacion)->delete();
+        return redirect()->route('libros.index');
+    }
+    public function buscar(Request $request){
+        $request->validate([
+            'buscar' => 'required',
+            'buscar_por' => 'required',
+        ]);
+
+        $libros = Libros::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->paginate(10);
+        return view('Libros.buscar',compact('libros'));
     }
 }

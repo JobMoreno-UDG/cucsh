@@ -17,7 +17,7 @@ class CreateLibrosTable extends Migration
             $table->string('clasificacion',40)->unique();
             $table->string('titulo',60);
             $table->string('autor',50);
-            $table->year('anio');
+            $table->integer('anio');
             $table->string('tomo_numero',20);
             $table->string('editorial',25);
             $table->string('lugar_publicacion',50);
@@ -27,6 +27,7 @@ class CreateLibrosTable extends Migration
             $table->string('isbn_issn',25);
             $table->date('fecha_ingreso');
             $table->string('situacion',25);
+            $table->string('space')->default('');
             $table->softDeletes();
             $table->timestamps();
         });

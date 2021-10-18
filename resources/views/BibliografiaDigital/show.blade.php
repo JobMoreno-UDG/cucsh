@@ -14,7 +14,7 @@
         </div>
     </div>
     <br>
-    @if (Auth::user()->rol == 'Administrador')
+    @if (Auth::user()->rol == '2')
         <a href="{{ route('bibliografia_digital.edit', $bibliografia->clasificacion) }}"
             class="btn btn-outline-primary col-sm-2">Editar</a>
     @endif

@@ -16,7 +16,7 @@ class CreateCuadernosTable extends Migration
         Schema::create('cuadernos', function (Blueprint $table) {
             $table->string('clasificacion',40)->unique();
             $table->string('titulo',100);
-            $table->year('anio');
+            $table->integer('anio');
             $table->string('editorial',50);
             $table->string('lugar_publicacion',50);
             $table->string('volumen',15);

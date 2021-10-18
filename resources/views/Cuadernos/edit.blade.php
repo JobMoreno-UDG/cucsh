@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('titulo', 'Cuadernos')
+@section('titulo', 'Editar - Cuadernos')
 
 @section('content')
 <form action="{{route('cuadernos.update')}}" class="row justify-content-bettwen" method="POST">
@@ -10,7 +10,7 @@
     </div>
     <div class="col-8">
         <label for="titulo" class="form-label">Titulo</label>
-        <input class="form-control" name="titulo"  id="titulo"value="{{$cuaderno->titulo}}"/>
+        <input class="form-control" name="titulo"  id="titulo" value="{{$cuaderno->titulo}}"/>
     </div>
 
     <div class="col-8">
@@ -90,7 +90,7 @@
         <input class="form-control"  type="date" name="fecha_ingreso" id="fecha_ingreso" value="{{str_replace(' 00:00:00', '',$cuaderno->fecha_ingreso)}}">
     </div>
     <div class="col-12 m-2 ">
-        <button type="submit" class="btn btn-outline-success col-sm-3">Actualizar</button>
+        <button type="submit" class="btn btn-success col-sm-3">Actualizar</button>
         <a class="btn btn-outline-dark col-sm-3" href="{{route('cuadernos.index')}}">Regresar</a>
     </div>
 </form>
