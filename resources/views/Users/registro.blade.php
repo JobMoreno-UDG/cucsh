@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('titulo', 'Cuadernos')
+@section('titulo', 'Registro - Usuarios')
 
 @section('content')
 <h1>Registro de Usuario</h1>
@@ -7,12 +7,12 @@
     @csrf
     <div class="col-12">
         <label for="" class="form-label">Nombre</label>
-        <input type="text" class="form-control" name="nombre">
+        <input type="text" class="form-control" name="name">
     </div>
 
     <div class="col-12">
         <label for="" class="form-label">Correo</label>
-        <input type="email" class="form-control" name="correo">
+        <input type="email" class="form-control" name="email">
     </div>
 
     <div class="col-12">
@@ -21,15 +21,15 @@
     </div>
 
     <div class="col-12">
-        <label for="" class="form-label">Tipo</label>
-        <select name="tipo" id="" class="form-control">
+        <label for="tipo" class="form-label">Tipo</label>
+        <select name="tipo" id="tipo" class="form-control">
             <option value="0">General</option>
             <option value="1">Trabajador UdG</option>
             <option value="2">Administrador</option>
         </select>
     </div>
     <div class="col-12 m-2 ">
-        <button type="submit" class="btn btn-success col-sm-3">Registrar</button>
+        <button type="submit" class="btn btn-success col-2">Registrar</button>
     </div>
 </form>
 @endsection

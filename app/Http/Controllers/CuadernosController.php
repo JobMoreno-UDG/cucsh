@@ -22,7 +22,7 @@ class CuadernosController extends Controller
     }
     public function edit($clasificacion)
     {
-        $info = Informacion::where('clasificacion', $clasificacion)->get()[0];
+        $info = Informacion::where('clasificacion', $clasificacion)->where('tipo','Cuadernos')->get()[0];
         $cuaderno = Cuadernos::where('clasificacion', '=', $clasificacion)->get()[0];
         return view('Cuadernos.edit', compact('cuaderno', 'info'));
     }
@@ -71,16 +71,14 @@ class CuadernosController extends Controller
         return redirect()->route('cuadernos.index');
 
     }
-    public function update(Request $request,$viejo)
+    public function update(Request $request,$cuaderno)
     {
         $request->validate([
             'titulo' => 'required',
             'clasificacion' => 'required',
             'fecha_ingreso'=>'required',
         ]);
-
-
-        Cuadernos::where('clasificacion',$request->viejo)->update(
+        Cuadernos::where('clasificacion',$cuaderno)->update(
             ['clasificacion'=> $request->clasificacion,
             'titulo'=>$request->titulo,
             'autor'=>$request->autor ?? '',
@@ -96,7 +94,7 @@ class CuadernosController extends Controller
             'isbn_issn'=>$request->isbn_issn ?? '']);
 
 
-        Informacion::where('clasificacion',$request->clasificacion)->update(
+        Informacion::where('clasificacion',$cuaderno)->where('tipo','Cuadernos')->update(
             ['clasificacion'=> $request->clasificacion,
             'obtencion'=>$request->obtencion ?? '',
             'resguardo'=>$request->resguardo ?? '',

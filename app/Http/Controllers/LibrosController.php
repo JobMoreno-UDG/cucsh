@@ -14,7 +14,7 @@ class LibrosController extends Controller
     }
     public function show($clasificacion){
         $libro = Libros::where('clasificacion',$clasificacion)->get()[0];
-        $info = Informacion::where('clasificacion',$clasificacion)->get()[0];
+        $info = Informacion::where('clasificacion',$clasificacion)->where('tipo','Libros')->get()[0];
         return view('Libros.show',compact('libro','info'));
 
     }
@@ -23,9 +23,9 @@ class LibrosController extends Controller
     }
     public function edit($clasificacion)
     {
-        $info = Informacion::where('clasificacion', $clasificacion)->get()[0];
-        $cuaderno = Libros::where('clasificacion', '=', $clasificacion)->get()[0];
-        return view('Libros.edit', compact('cuaderno', 'info'));
+        $info = Informacion::where('clasificacion', $clasificacion)->where('tipo','Libros')->get()[0];
+        $libros = Libros::where('clasificacion', '=', $clasificacion)->get()[0];
+        return view('Libros.edit', compact('libros', 'info'));
     }
     public function create(Request $request)
     {
@@ -63,6 +63,42 @@ class LibrosController extends Controller
 
         $libro->save();
         $info->save();
+
+        return redirect()->route('libros.index');
+
+    }
+    public function update(Request $request,$libro){
+
+        $request->validate([
+            'titulo' => 'required',
+            'clasificacion' => 'required',
+            'fecha_ingreso'=>'required',
+        ]);
+        Libros::where('clasificacion',$libro)->update(
+            ['clasificacion'=> $request->clasificacion,
+            'titulo'=>$request->titulo,
+            'autor'=>$request->autor ?? '',
+            'anio'=> $request->anio ?? 0000,
+            'editorial'=>$request->editorial ?? '',
+            'lugar_publicacion'=>$request->lugar_publicacion ?? '',
+            'volumen'=>$request->volumen ?? '',
+            'fecha_ingreso'=> $request->fecha_ingreso,
+            'situacion' => $request->situacion ?? '',
+            'tomo_numero'=>$request->tomo_numero ?? '',
+            'paginas'=> $request->paginas ?? 0,
+            'serie'=> $request->serie ?? '',
+            'isbn_issn'=>$request->isbn_issn ?? '']);
+
+
+        Informacion::where('clasificacion',$libro)->where('tipo','Libros')->update(
+            ['clasificacion'=> $request->clasificacion,
+            'obtencion'=>$request->obtencion ?? '',
+            'resguardo'=>$request->resguardo ?? '',
+            'contenido'=>$request->contenido ?? '',
+            'codigo_barras'=>$request->codigo_barras ?? 0,
+            'inventario'=>$request->inventario ?? '',
+            'fecha_publicacion'=>$request->fecha_publicacion]);
+
 
         return redirect()->route('libros.index');
 

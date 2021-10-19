@@ -67,8 +67,8 @@
             <span><b>Fecha Publicación </b> <br>{{ ($info->fecha_publicacion == 0 ) ? 'Desconocida'  :str_replace(' 00:00:00', '',$info->fecha_publicacion); }}</span>
         </div>
     </div>
-    @if (Auth::user()->rol == '2')
-        <a href="{{ route('cuadernos.edit', ['cuaderno' => $cuaderno->clasificacion]) }}"
+    @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
+        <a href="{{ route('cuadernos.edit',$cuaderno->clasificacion) }}"
             class="btn btn-success col-sm-3">Editar</a>
     @endif
     <a class="btn btn-outline-dark col-sm-3" href="{{ route('cuadernos.index') }}">Regresar</a>

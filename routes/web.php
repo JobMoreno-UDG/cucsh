@@ -78,7 +78,7 @@ Route::get('libros/{libro}/edit',[LibrosController::class,'edit'])->name('libros
 
 Route::get('libro/registro',[LibrosController::class,'registro'])->name('libro.registro');
 Route::post('libros/create',[LibrosController::class,'create'])->name('libros.create');
-Route::post('libros/update',[LibrosController::class,'update'])->name('libros.update');
+Route::post('libros/update/{clasificacion}',[LibrosController::class,'update'])->name('libros.update');
 Route::get('libros/{libro}/delete',[LibrosController::class,'delete'])->name('libros.delete');
 
 Route::post('libros/buscar',[LibrosController::class,'buscar'])->name('libros.buscar');

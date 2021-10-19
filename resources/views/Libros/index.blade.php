@@ -28,7 +28,7 @@
             <button type="submit" class="btn btn-dark mb-3">Buscar</button>
         </div>
 
-        @if (Auth::user()->rol == '2')
+        @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
             <div class="col-sm-12 col-md-5 m-1 ms-auto">
 
                 <a class="col-sm-12 col-auto btn btn-outline-dark" href="{{ route('libro.registro') }}">Añadir Registro</a>
@@ -58,11 +58,13 @@
                 <div class="col-auto">
                     <a href="{{ route('libros.show', $item->clasificacion) }}"
                         class="btn btn-outline-primary col-2">Ver</a>
-                    @if (Auth::user()->rol == '2')
+                        @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
                         <a href="{{ route('libros.edit', $item->clasificacion) }}"
                             class="btn btn-outline-success col-2">Editar</a>
-                        <a href="{{ route('libros.delete', $item->clasificacion) }}"
-                            class="btn btn-outline-danger col-2">Eliminar</a>
+                        @if (Auth::user()->rol == '2')
+                            <a href="{{ route('libros.delete', $item->clasificacion) }}"
+                                class="btn btn-outline-danger col-2">Eliminar</a>
+                        @endif
                     @endif
                 </div>
 

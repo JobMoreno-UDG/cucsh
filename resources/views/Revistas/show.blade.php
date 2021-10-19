@@ -83,9 +83,9 @@
         </div>
     </div>
 <br/>
-    @if (Auth::user()->rol == '2')
+    @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
         <a href="{{ route('revistas.edit', ['revista' => $revista->clasificacion]) }}"
-            class="btn btn-outline-success col-2">Editar</a>
+            class="btn btn-success col-2">Editar</a>
     @endif
     <a href="{{ route('revistas.index') }}" class="btn btn-outline-dark col-2">Regresar</a>
 @endsection

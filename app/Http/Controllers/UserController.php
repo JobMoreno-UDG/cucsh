@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Usuarios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,16 +15,17 @@ class UserController extends Controller
 
     public function create(Request $request){
         $request->validate([
-            'nombre'=>'required',
-            'correo'=>'required|email',
-            'contraseña'=>'required|min:8',
+            'name'=>'required',
+            'email'=>'required|email',
+            'password'=>'required|min:8',
             'tipo'=>'required',
         ]);
-        return User::create([
-            'name' => $request->nombre,
-            'email' =>$request->correo,
-            'password' => Hash::make($request->contraseña),
-            'rol'=>$request->tipo,
-        ]);
+        $usuario = new User();
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->password = Hash::make($request->password);
+        $usuario->rol = $request->tipo;
+        $usuario->save();
+        return redirect()->route('home');
     }
 }

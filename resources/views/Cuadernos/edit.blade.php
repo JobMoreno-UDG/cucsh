@@ -2,7 +2,7 @@
 @section('titulo', 'Editar - Cuadernos')
 
 @section('content')
-<form action="{{route('cuadernos.update')}}" class="row justify-content-bettwen" method="POST">
+<form action="{{route('cuadernos.update',$cuaderno->clasificacion)}}" class="row justify-content-bettwen" method="POST">
     @csrf
     <div class="col-auto">
         <label for="clasificacion" class="form-label">Clasificación</label>
@@ -65,17 +65,12 @@
     </div>
 
     <div class="col-auto">
-        <label for="reguardo" class="form-label">Resguardo</label>
-        <input class="form-control"  type="text" name="reguardo" id="reguardo" value="{{$info->reguardo}}">
+        <label for="resguardo" class="form-label">Resguardo</label>
+        <input class="form-control"  type="text" name="resguardo" id="resguardo" value="{{$info->resguardo}}">
     </div>
     <div class="col-8">
         <label for="contenido" class="form-label">Contenido</label>
         <textarea class="form-control" name="contenido">{{$info->contenido}}</textarea>
-    </div>
-
-    <div class="col-auto">
-        <label for="prestadoA" class="form-label">Prestado A</label>
-        <input class="form-control"  type="text" name="prestadoA" id="prestadoA" value="{{$info->prestadoA}}">
     </div>
     <div class="col-auto">
         <label for="inventario" class="form-label">Inventario</label>

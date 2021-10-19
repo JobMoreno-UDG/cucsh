@@ -65,8 +65,8 @@
     </div>
 
     <div class="col-auto">
-        <label for="reguardo" class="form-label">Resguardo</label>
-        <input class="form-control"  type="text" name="reguardo" id="reguardo" value="{{$info->reguardo}}">
+        <label for="resguardo" class="form-label">Resguardo</label>
+        <input class="form-control"  type="text" name="resguardo" id="resguardo" value="{{$info->resguardo}}">
     </div>
     <div class="col-8">
         <label for="contenido" class="form-label">Contenido</label>

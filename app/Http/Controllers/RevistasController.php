@@ -14,7 +14,7 @@ class RevistasController extends Controller
         return view('Revistas.index', compact('revista'));
     }
     public function show($revista){
-        $info = Informacion::where('clasificacion', $revista)->get()[0];
+        $info = Informacion::where('clasificacion', $revista)->where('tipo','Revistas')->get()[0];
         $revista = Revistas::where('clasificacion', $revista)->get()[0];
         return view('Revistas.show', compact('revista', 'info'));
     }
@@ -50,7 +50,7 @@ class RevistasController extends Controller
         $revista->space2 = $request->space2 ?? '';
 
         $info->clasificacion = $request->clasificacion;
-        $info->tipo = 'Revista';
+        $info->tipo = 'Revistas';
         $info->obtencion = $request->obtencion ?? '';
         $info->resguardo = $request->resguardo ?? '';
         $info->contenido = $request->contenido ?? '';
@@ -93,7 +93,7 @@ class RevistasController extends Controller
             'space2'=>$request->space2 ?? '',
             ]);
 
-        Informacion::where('clasificacion',$request->clasificacion)->update(
+        Informacion::where('clasificacion',$request->clasificacion)->where('tipo','Revistas')->update(
             ['clasificacion'=> $request->clasificacion,
             'obtencion'=>$request->obtencion ?? '',
             'resguardo'=>$request->resguardo ?? '',
