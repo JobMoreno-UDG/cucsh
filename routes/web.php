@@ -89,3 +89,4 @@ Auth::routes();
 
 Route::get('usuarios/registro',[UserController::class,'registro'])->name('usuario.registro');
 Route::post('usuarios/create',[UserController::class,'create'])->name('usuario.create');
+Route::get('usuarios/index',[UserController::class,'index'])->name('usuario.index');

@@ -28,4 +28,8 @@ class UserController extends Controller
         $usuario->save();
         return redirect()->route('home');
     }
+    public function index(){
+        $usuarios = User::paginate(15);
+        return view('Users.index',compact('usuarios'));
+    }
 }

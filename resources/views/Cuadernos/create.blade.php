@@ -98,7 +98,7 @@
     </div>
     <div class="col-12 m-2 ">
         <button type="submit" class="btn btn-success col-sm-3">Registrar</button>
-        <a class="btn btn-outline-dark col-sm-3" href="{{route('cuadernos.index')}}">Regresar</a>
+        <a class="btn btn-outline-dark col-3" href="{{route('cuadernos.index')}}">Regresar</a>
     </div>
 </form>
 @endsection

@@ -40,5 +40,5 @@
 @else
 <h1>No hay coincidencias</h1>
 @endif
-
+<a class="btn btn-outline-dark col-sm-3" href="{{ route('bibliografia_digital.index') }}">Regresar</a>
 @endsection

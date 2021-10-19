@@ -36,7 +36,7 @@
                             <a class="nav-link" aria-current="page" href="{{url('/')}}">Home</a>
                             <a class="nav-link" href="{{route('libros.index')}}">Libros</a>
                             <a class="nav-link" href="{{route('revistas.index')}}">Revistas</a>
-                            <a class="nav-link" href="{{route('bibliografia_digital.index')}}">Biblioteca Digital</a>
+                            <a class="nav-link" href="{{route('bibliografia_digital.index')}}">Bibliografia Digital</a>
                             <a class="nav-link" href="{{route('cuadernos.index')}}">Cuadernos</a>
                           </div>
                         </div>
