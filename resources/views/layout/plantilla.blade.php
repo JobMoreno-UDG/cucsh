@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,29 +19,30 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>@yield('titulo')</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                          <div class="navbar-nav">
-                            <a class="nav-link" aria-current="page" href="{{url('/')}}">Home</a>
-                            <a class="nav-link" href="{{route('libros.index')}}">Libros</a>
-                            <a class="nav-link" href="{{route('revistas.index')}}">Revistas</a>
-                            <a class="nav-link" href="{{route('bibliografia_digital.index')}}">Bibliografia Digital</a>
-                            <a class="nav-link" href="{{route('cuadernos.index')}}">Cuadernos</a>
-                          </div>
-                        </div>
-                      </div>
+                    <a class="nav-link" aria-current="page" href="{{ url('/') }}">Home</a>
+                    <a class="nav-link" href="{{ route('libros.index') }}">Libros</a>
+                    <a class="nav-link" href="{{ route('revistas.index') }}">Revistas</a>
+                    <a class="nav-link" href="{{ route('bibliografia_digital.index') }}">Bibliografia Digital</a>
+                    <a class="nav-link" href="{{ route('cuadernos.index') }}">Cuadernos</a>
+                    @if (Auth::user()->rol == '2' || Auth::user()->rol == '1' )
+                        @if (Auth::user()->rol == '2')
+                            <a href="{{route('usuario.index')}}" class="nav-link" >Usuarios</a>
+                        @endif
+
+                        <a href="{{route('prestamos.index')}}" class="nav-link" >Prestamos</a>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -60,17 +62,18 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Cerrar Sesión
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
                                     @csrf
                                 </form>
                             </div>
@@ -80,8 +83,9 @@
             </div>
         </div>
     </nav>
-      <div class="container p-2 mt-3">
-          @yield('content')
-      </div>
+    <div class="container p-2 mt-3">
+        @yield('content')
+    </div>
 </body>
+
 </html>

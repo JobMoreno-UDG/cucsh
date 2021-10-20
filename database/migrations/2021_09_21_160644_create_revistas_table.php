@@ -14,7 +14,7 @@ class CreateRevistasTable extends Migration
     public function up()
     {
         Schema::create('revistas', function (Blueprint $table) {
-            $table->string('clasificacion',15)->unique();
+            $table->string('clasificacion',40)->unique();
             $table->string('titulo',100);
             $table->string('autor',50);
             $table->integer('anio');

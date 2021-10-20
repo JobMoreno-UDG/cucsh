@@ -30,10 +30,7 @@
 
         @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
             <div class="col-sm-12 col-md-5 m-1 ms-auto">
-
                 <a class="col-sm-12 col-auto btn btn-outline-dark" href="{{ route('libro.registro') }}">Añadir Registro</a>
-                <a class="col-sm-12  col-auto btn btn-outline-dark" href="">Registrar Prestamo</a>
-                <a class="col-sm-12  col-auto btn btn-outline-dark" href="">Cerrar Prestamo</a>
             </div>
         @endif
     </form>
@@ -65,6 +62,7 @@
                             <a href="{{ route('libros.delete', $item->clasificacion) }}"
                                 class="btn btn-outline-danger col-2">Eliminar</a>
                         @endif
+                        <a class="col-sm-12  col-auto btn btn-outline-dark" href="{{route('prestamos.registro',['Libros',$item->clasificacion])}}">Registrar Prestamo</a>
                     @endif
                 </div>
 

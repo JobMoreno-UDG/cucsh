@@ -1,7 +1,12 @@
 @extends('layout.plantilla')
-@section('titulo', 'Ver - Usuarios')
+@section('titulo', 'Usuarios')
 
 @section('content')
+<div class="row d-flex justify-content-end">
+    <a href="{{route('usuario.registro')}}" class="btn btn-primary">Registrar Usuario</a>
+</div>
+<br/>
+<div class="row">
     <table class="table">
         <thead>
             <tr>
@@ -33,4 +38,5 @@
 
         @endforeach
     </table>
+</div>
 @endsection

@@ -32,8 +32,6 @@
             <div class="col-sm-12 col-md-5 m-1 ms-auto">
                 <a class="col-sm-12 col-auto btn btn-outline-dark"
                     href="{{ route('bibliografia_digital.registro') }}">Añadir Registro</a>
-                <a class="col-sm-12  col-auto btn btn-outline-dark" href="">Registrar Prestamo</a>
-                <a class="col-sm-12  col-auto btn btn-outline-dark" href="">Cerrar Prestamo</a>
             </div>
         @endif
     </form>
@@ -64,6 +62,8 @@
                             <a href="{{ route('bibliografia_digital.delete', $item->clasificacion) }}"
                                 class="btn btn-outline-danger col-sm-2">Eliminar</a>
                         @endif
+                        <a class="col-sm-12  col-auto btn btn-outline-dark" href="{{route('prestamos.registro',['Bibliografia Digital',$item->clasificacion])}}">Registrar Prestamo</a>
+                        
 
                     @endif
                 </div>

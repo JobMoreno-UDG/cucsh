@@ -15,12 +15,13 @@ class CreatePrestamosTable extends Migration
     {
         Schema::create('prestamos', function (Blueprint $table) {
             $table->id();
-            $table->string('clasificacion',40)->unique();
+            $table->string('clasificacion',40);
             $table->string('tipo');
-            $table->year('fecha_prestamo');
-            $table->year('fecha_entrega');
+            $table->date('fecha_prestamo');
+            $table->date('fecha_entrega')->nullable();
             $table->string('prestado_A');
-            $table->string('status')->default('abierto');
+            $table->string('correo');
+            $table->string('status')->default('Abierto');
             $table->timestamps();
         });
     }

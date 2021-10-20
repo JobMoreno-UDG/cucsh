@@ -4,6 +4,7 @@ use App\Http\Controllers\BibliografiaDigitalController;
 use App\Http\Controllers\CuadernosController;
 use App\Http\Controllers\RevistasController;
 use App\Http\Controllers\LibrosController;
+use App\Http\Controllers\PrestamosController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -90,3 +91,11 @@ Auth::routes();
 Route::get('usuarios/registro',[UserController::class,'registro'])->name('usuario.registro');
 Route::post('usuarios/create',[UserController::class,'create'])->name('usuario.create');
 Route::get('usuarios/index',[UserController::class,'index'])->name('usuario.index');
+
+
+# Prestamos
+
+Route::get('prestamos',[PrestamosController::class,'index'])->name('prestamos.index');
+Route::get('prestamos/{tipo}/{clasificacion}/registro',[PrestamosController::class,'registro'])->name('prestamos.registro');
+Route::post('prestamos/create',[PrestamosController::class,'create'])->name('prestamos.create');
+Route::get('prestamos/{tipo}/{clasificacion}/{fecha_presatdo}/cerrar',[PrestamosController::class,'cerrar_prestamo'])->name('prestamos.cerrar');
