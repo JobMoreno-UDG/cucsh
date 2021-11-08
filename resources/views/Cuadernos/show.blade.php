@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('title', 'Mostrar - Cuadernos')
+@section('titulo', 'Mostrar - Cuadernos')
 
 
 @section('content')

@@ -4,16 +4,16 @@
 @section('content')
     <form class="row g-3 justify-content-justify" action="{{ route('bibliografia_digital.buscar') }}" method="POST">
         @csrf
-        <div class="col-auto">
+        <div class="col-sm-12 col-md-2 m-1">
             <input type="text" class="form-control" id="buscar" name="buscar" placeholder="Buscar">
             @error('buscar')
                 <small>{{ $message }}</small>
                 <br>
             @enderror
         </div>
-        <div class="col-auto">
+        <div class="col-sm-12 col-md-2 m-1">
             <select name="buscar_por" id="" class="form-control">
-                <option value="">---</option>
+                <option value="">- - -</option>
                 <option value="autor">Autor</option>
                 <option value="titulo">Titulo</option>
                 <option value="anio">Año</option>
@@ -24,16 +24,16 @@
                 <br>
             @enderror
         </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-dark mb-3">Buscar</button>
+        <div class="col-sm-12 col-md-2 m-1">
+            <button type="submit" class="w-100 btn btn-dark mb-3">Buscar</button>
         </div>
         @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
-            <div class="col-sm-12 col-md-5 ms-auto">
-                <a class="col-sm-12 col-auto btn btn-primary" href="{{ route('bibliografia_digital.registro') }}">Añadir Registro</a>
+            <div class="col-sm-12 col-md-2 m-1">
+                <a class="w-100 col-sm-12 col-auto btn btn-primary" href="{{ route('bibliografia_digital.registro') }}">Añadir Registro</a>
             </div>
         @endif
     </form>
-    <div class="row justify-content-end align-middle">
+    <div class="row justify-content-end text-center align-middle">
         <div class="col-auto">
             <span class="btn">Total de Regsitros: {{ $total }}</span>
         </div>
@@ -61,17 +61,17 @@
                             <span><b>Año: </b>{{ $item->anio }}</span>
                         </div>
                     </div>
-                    <div class="col-auto">
+                    <div class="row">
                         <a href="{{ route('bibliografia_digital.show', $item->clasificacion) }}"
-                            class="btn btn-outline-primary col-sm-2">Ver</a>
+                            class="btn btn-outline-primary col-sm-6  col-md-2 m-1">Ver</a>
                         @if (Auth::user()->rol == '2' or Auth::user()->rol == '1')
                             <a href="{{ route('bibliografia_digital.edit', $item->clasificacion) }}"
-                                class="btn btn-outline-success col-sm-2">Editar</a>
+                                class="btn btn-outline-success col-sm-6  col-md-2 m-1">Editar</a>
                             @if (Auth::user()->rol == '2')
                                 <a href="{{ route('bibliografia_digital.delete', $item->clasificacion) }}"
-                                    class="btn btn-outline-danger col-sm-2">Eliminar</a>
+                                    class="btn btn-outline-danger col-sm-6 col-md-2 m-1">Eliminar</a>
                             @endif
-                            <a class="col-sm-12  col-auto btn btn-outline-dark"
+                            <a class="m-1 col-sm-6  col-md-2 btn btn-outline-dark"
                                 href="{{ route('prestamos.registro', ['Bibliografia Digital', $item->clasificacion]) }}">Registrar
                                 Prestamo</a>
 
@@ -83,5 +83,8 @@
             </div>
         @endforeach
     </div>
-    {{ $bibliografia->links() }}
+    <div class="row">
+        {{ $bibliografia->links() }}
+    </div>
+
 @endsection

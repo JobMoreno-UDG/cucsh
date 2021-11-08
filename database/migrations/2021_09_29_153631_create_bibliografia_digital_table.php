@@ -16,8 +16,8 @@ class CreateBibliografiaDigitalTable extends Migration
         Schema::create('bibliografia_digital', function (Blueprint $table) {
             $table->id();
             $table->string('clasificacion',40);
-            $table->string('titulo',60);
-            $table->string('autor',50);
+            $table->string('titulo',100);
+            $table->string('autor',100);
             $table->integer('anio');
             $table->softDeletes();
             $table->timestamps();

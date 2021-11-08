@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('title', 'Mostrar Bibliografia Digital')
+@section('titulo', 'Mostrar - Bibliografia Digital')
 
 
 @section('content')

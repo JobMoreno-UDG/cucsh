@@ -4,14 +4,14 @@
 @section('content')
     <form class="row g-3 justify-content-justify" method="post" action="{{ route('libros.buscar') }}">
         @csrf
-        <div class="col-auto">
+        <div class="col-sm-12 col-md-2 m-1">
             <input type="text" class="form-control" id="buscar" name="buscar" placeholder="Buscar">
             @error('buscar')
                 <small>{{ $message }}</small>
                 <br>
             @enderror
         </div>
-        <div class="col-auto">
+        <div class="col-sm-12 col-md-2 m-1">
             <select name="buscar_por" id="" class="form-control">
                 <option value="">---</option>
                 <option value="autor">Autor</option>
@@ -24,13 +24,13 @@
                 <br>
             @enderror
         </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-dark mb-3">Buscar</button>
+        <div class="col-sm-12 col-md-2 m-1">
+            <button type="submit" class="w-100 btn btn-dark mb-3">Buscar</button>
         </div>
 
         @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
-            <div class="col-sm-12 col-md-5  ms-auto">
-                <a class="col-sm-12 col-auto btn btn-primary" href="{{ route('libro.registro') }}">Añadir Registro</a>
+            <div class="col-sm-12 col-md-2 m-1">
+                <a class="w-100 col-sm-12 col-auto btn btn-primary" href="{{ route('libro.registro') }}">Añadir Registro</a>
             </div>
         @endif
     </form>
@@ -63,16 +63,16 @@
                         </div>
                     </div>
 
-                    <div class="col-auto">
-                        <a href="{{ route('libros.show', $item->id) }}" class="btn btn-outline-primary col-2">Ver</a>
+                    <div class="row">
+                        <a href="{{ route('libros.show', $item->id) }}" class="btn btn-outline-primary col-sm-6  col-md-2 m-1">Ver</a>
                         @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
                             <a href="{{ route('libros.edit', $item->id) }}"
-                                class="btn btn-outline-success col-2">Editar</a>
+                                class="btn btn-outline-success col-sm-6  col-md-2 m-1">Editar</a>
                             @if (Auth::user()->rol == '2')
                                 <a href="{{ route('libros.delete', $item->id) }}"
-                                    class="btn btn-outline-danger col-2">Eliminar</a>
+                                    class="btn btn-outline-danger col-sm-6 col-md-2 m-1">Eliminar</a>
                             @endif
-                            <a class="col-sm-12  col-auto btn btn-outline-dark"
+                            <a class="m-1 col-sm-6  col-md-2 btn btn-outline-dark"
                                 href="{{ route('prestamos.registro', ['Libros', $item->clasificacion]) }}">Registrar
                                 Prestamo</a>
                         @endif
