@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('titulo', 'Mostrar Cuaderno')
+@section('titulo', 'Mostrar - Libro')
 
 
 @section('content')
@@ -44,7 +44,7 @@
             <span><b>ISBN o ISSN </b> <br>{{($libro->isbn_issn == '') ?'-' : $libro->isbn_issn }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
-            <span><b>Space </b><br>{{($libro->space == '') ?'-' :  $info->space }}</span>
+            <span><b>Space </b><br>{{($libro->space == '') ?'-' :  $libro->space }}</span>
         </div>
     </div>
     <hr>
@@ -57,7 +57,7 @@
             <span><b>Resguardo </b> <br>{{($info->resguardo == '') ?'-' : $info->resguardo }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
-            <span><b>Fecha Publicación </b> <br>{{ ($info->fecha_publicacion == 0 ) ? 'Desconocida' : str_replace(' 00:00:00', '',$info->fecha_publicacion); }}</span>
+            <span><b>Fecha Publicación </b> <br>{{ ($info->fecha_publicacion == '0000-00-00' ) ? '-' : str_replace(' 00:00:00', '',$info->fecha_publicacion); }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
             <span><b>Inventario </b> <br>{{($info->inventario == '') ?'-' : $info->inventario }}</span>
@@ -78,7 +78,7 @@
 
 <br/>
 @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
-<a href="{{ route('libros.edit', ['libro' => $libro->clasificacion]) }}"
+<a href="{{ route('libros.edit', ['libro' => $libro->id]) }}"
     class="btn btn-success col-2">Editar</a>
 @endif
 <a href="{{route('libros.index')}}" class="btn btn-outline-dark col-2">Regresar</a>

@@ -14,6 +14,7 @@ class CreateInformacionTable extends Migration
     public function up()
     {
         Schema::create('informacion', function (Blueprint $table) {
+            $table->id();
             $table->string('clasificacion',40);
             $table->string('tipo',20);
             $table->string('obtencion',50);

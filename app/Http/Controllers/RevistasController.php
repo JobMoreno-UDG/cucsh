@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Revistas;
 use App\Models\Informacion;
 use Illuminate\Http\Request;
+use App\Exports\RevistasExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RevistasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $revista = Revistas::paginate(10);
-        return view('Revistas.index', compact('revista'));
+        $total = count(Revistas::all());
+        return view('Revistas.index', compact('revista','total'));
     }
     public function show($revista){
         $info = Informacion::where('clasificacion', $revista)->where('tipo','Revistas')->get()[0];
@@ -117,5 +124,10 @@ class RevistasController extends Controller
     public function delete($clasificacion){
         Revistas::where('clasificacion',$clasificacion)->delete();
         return redirect()->route('revistas.index');
+    }
+    public function export()
+    {
+
+        return Excel::download(new RevistasExport, 'revistas.xlsx');
     }
 }

@@ -99,3 +99,11 @@ Route::get('prestamos',[PrestamosController::class,'index'])->name('prestamos.in
 Route::get('prestamos/{tipo}/{clasificacion}/registro',[PrestamosController::class,'registro'])->name('prestamos.registro');
 Route::post('prestamos/create',[PrestamosController::class,'create'])->name('prestamos.create');
 Route::get('prestamos/{tipo}/{clasificacion}/{fecha_presatdo}/cerrar',[PrestamosController::class,'cerrar_prestamo'])->name('prestamos.cerrar');
+
+
+# Excel
+
+Route::get('bibliografia', [BibliografiaDigitalController::class,'export'])->name('bibliografia.export');
+Route::get('libro/export', [LibrosController::class,'export'])->name('libros.export');
+Route::get('cuaderno/export', [CuadernosController::class,'export'])->name('cuadernos.export');
+Route::get('revista/export', [RevistasController::class,'export'])->name('revistas.export');

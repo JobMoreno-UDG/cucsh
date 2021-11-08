@@ -3,32 +3,40 @@
 namespace App\Http\Controllers;
 use App\Models\Libros;
 use App\Models\Informacion;
+use App\Exports\LibrosExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Http\Request;
 
 class LibrosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $libros = Libros::paginate(10);
-        return view('Libros.index',compact('libros'));
+        $total = count(Libros::all());
+        return view('Libros.index',compact('libros','total'));
     }
-    public function show($clasificacion){
-        $libro = Libros::where('clasificacion',$clasificacion)->get()[0];
-        $info = Informacion::where('clasificacion',$clasificacion)->where('tipo','Libros')->get()[0];
+    public function show($id){
+        $libro = Libros::find($id);
+        $info = Informacion::where('clasificacion',$libro->clasificacion)->where('tipo','Libros')->get()[0];
+
         return view('Libros.show',compact('libro','info'));
 
     }
     public function registro(){
         return view('Libros.create');
     }
-    public function edit($clasificacion)
+    public function edit($id)
     {
-        $info = Informacion::where('clasificacion', $clasificacion)->where('tipo','Libros')->get()[0];
-        $libros = Libros::where('clasificacion', '=', $clasificacion)->get()[0];
+        $libros = Libros::find($id);
+        $info = Informacion::where('clasificacion',$libros->clasificacion)->where('tipo','Libros')->get()[0];
+
         return view('Libros.edit', compact('libros', 'info'));
     }
-    public function create(Request $request)
-    {
+    public function create(Request $request){
         $request->validate([
             'titulo' => 'required',
             'clasificacion' => 'required',
@@ -51,6 +59,7 @@ class LibrosController extends Controller
         $libro->paginas = $request->paginas ?? 0;
         $libro->serie = $request->serie ?? '';
         $libro->isbn_issn = $request->isbn_issn ?? '';
+        $libro->space = $request->space ?? '';
 
         $info->clasificacion = $request->clasificacion;
         $info->tipo = 'Libros';
@@ -64,6 +73,7 @@ class LibrosController extends Controller
         $libro->save();
         $info->save();
 
+        //$libro = new Libros($request->all());
         return redirect()->route('libros.index');
 
     }
@@ -87,7 +97,8 @@ class LibrosController extends Controller
             'tomo_numero'=>$request->tomo_numero ?? '',
             'paginas'=> $request->paginas ?? 0,
             'serie'=> $request->serie ?? '',
-            'isbn_issn'=>$request->isbn_issn ?? '']);
+            'isbn_issn'=>$request->isbn_issn ?? '',
+            'space'=>$request->isbn_issn ?? '']);
 
 
         Informacion::where('clasificacion',$libro)->where('tipo','Libros')->update(
@@ -103,8 +114,8 @@ class LibrosController extends Controller
         return redirect()->route('libros.index');
 
     }
-    public function delete($clasificacion){
-        Libros::where('clasificacion',$clasificacion)->delete();
+    public function delete($id){
+        Libros::where('id',$id)->delete();
         return redirect()->route('libros.index');
     }
     public function buscar(Request $request){
@@ -115,5 +126,10 @@ class LibrosController extends Controller
 
         $libros = Libros::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->paginate(10);
         return view('Libros.buscar',compact('libros'));
+    }
+    public function export()
+    {
+
+        return Excel::download(new LibrosExport, 'libros.xlsx');
     }
 }

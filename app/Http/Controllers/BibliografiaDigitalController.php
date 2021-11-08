@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\BibliografiaDigital;
 use Illuminate\Http\Request;
+use App\Exports\BibliografiaExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class BibliografiaDigitalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $bibliografia = BibliografiaDigital::paginate(10);
-        return view('BibliografiaDigital.index',compact('bibliografia'));
+        $total = count(BibliografiaDigital::all());
+        return view('BibliografiaDigital.index',compact('bibliografia','total'));
     }
     public function show($clasificacion){
         $bibliografia = BibliografiaDigital::where('clasificacion',$clasificacion)->get();
@@ -69,4 +77,10 @@ class BibliografiaDigitalController extends Controller
         $bibliografia = BibliografiaDigital::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->paginate(10);
         return view('BibliografiaDigital.buscar',compact('bibliografia'));
     }
+
+    public function export()
+    {
+        return Excel::download(new BibliografiaExport, 'bibliogarfia.xlsx');
+    }
+
 }

@@ -14,7 +14,8 @@ class CreateBibliografiaDigitalTable extends Migration
     public function up()
     {
         Schema::create('bibliografia_digital', function (Blueprint $table) {
-            $table->string('clasificacion',40)->unique();
+            $table->id();
+            $table->string('clasificacion',40);
             $table->string('titulo',60);
             $table->string('autor',50);
             $table->integer('anio');

@@ -29,6 +29,9 @@
                     class="btn btn-outline-success col-sm-2">Editar</a>
                 <a href="{{ route('bibliografia_digital.delete', $item->clasificacion) }}"
                     class="btn btn-outline-danger col-sm-2">Eliminar</a>
+                    <a class="col-sm-12  col-auto btn btn-outline-dark"
+                    href="{{ route('prestamos.registro', ['Bibliografia Digital', $item->clasificacion]) }}">Registrar
+                    Prestamo</a>
             @endif
         </div>
 

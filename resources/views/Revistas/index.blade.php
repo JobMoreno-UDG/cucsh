@@ -29,12 +29,23 @@
         </div>
 
         @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
-            <div class="col-sm-12 col-md-5 m-1 ms-auto">
-                <a class="col-sm-12 col-auto btn btn-outline-dark" href="{{ route('revistas.registro') }}">Añadir
+            <div class="col-sm-12 col-md-5 ms-auto">
+                <a class="col-sm-12 col-auto btn btn-primary" href="{{ route('revistas.registro') }}">Añadir
                     Registro</a>
             </div>
         @endif
     </form>
+    <div class="row justify-content-end align-middle">
+        <div class="col-auto">
+            <span class="btn">Total de Regsitros: {{$total}}</span>
+
+        </div>
+        @if (Auth::user()->rol == '2' or Auth::user()->rol == '1')
+            <div class="col-auto">
+                <a href="{{route('revistas.export')}}" class="btn">Expotar a Excel <i class="bi bi-arrow-down-circle"></i></a>
+            </div>
+        @endif
+    </div>
     @foreach ($revista as $item)
         <div class="card">
             <div class="card-body">

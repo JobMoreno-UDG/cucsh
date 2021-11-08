@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('titulo', 'Busqueda - Cuadernos')
+@section('titulo', 'Busqueda - Revistas')
 
 @section('content')
     @if (count($revistas) > 0)
@@ -23,11 +23,16 @@
                 <div class="col-auto">
                     <a href="{{ route('revistas.show', $item->clasificacion) }}"
                         class="btn btn-outline-primary col-sm-2">Ver</a>
-                    @if (Auth::user()->rol == '2')
+                    @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
                         <a href="{{ route('revistas.edit', $item->clasificacion) }}"
                             class="btn btn-outline-success col-sm-2">Editar</a>
-                        <a href="{{ route('revistas.delete', $item->clasificacion) }}"
-                            class="btn btn-outline-danger col-sm-2">Eliminar</a>
+                            @if (Auth::user()->rol == '2')
+                            <a href="{{ route('revistas.delete', $item->clasificacion) }}"
+                                class="btn btn-outline-danger col-sm-2">Eliminar</a>
+                            @endif
+                        <a class="col-sm-12  col-auto btn btn-outline-dark"
+                            href="{{ route('prestamos.registro', ['Revistas', $item->clasificacion]) }}">Registrar
+                            Prestamo</a>
                     @endif
                 </div>
             </div>
@@ -37,5 +42,5 @@
     @else
         <h1>No hay coincidencias</h1>
     @endif
-    <a class="btn btn-outline-dark col-sm-3" href="{{route('cuadernos.index')}}">Regresar</a>
+    <a class="btn btn-outline-dark col-sm-3" href="{{route('revistas.index')}}">Regresar</a>
 @endsection

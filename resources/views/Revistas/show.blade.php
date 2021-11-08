@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('titulo', 'Editar - Revista')
+@section('titulo', 'Mostrar - Revista')
 
 @section('content')
     <div class="row">

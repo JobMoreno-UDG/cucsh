@@ -75,7 +75,7 @@ INSERT INTO `informacion` (`clasificacion`, `tipo`, `obtencion`, `resguardo`, `c
 ('CUA-00087', 'Cuadernos', '', '', 'ON THE DEVELOPMENT OF \"PACIFIC SCIENCE AND TECHNOLOGY PROFILE\". THE JAPANESE SCIENCE AND TECNOLOGY INDIAOR SYSTEM AND INDUSTRIAL R&D RESOURCE DIVERSITICATION',  0, '', '0000-00-00'),
 ('CUA-00113', 'Cuadernos', '', '', '',  0, '', '0000-00-00'),
 ('CUA-00114', 'Cuadernos', '', '', '',  0, '', '0000-00-00'),
-('CUA-00115', 'Cuadernos', 'DONACIÓN',  'ASPECTOS QUE CONFORMAN EL PROCESO ALIMENTARIO',  0, '', '1993-12-31'),
+('CUA-00115', 'Cuadernos', 'DONACIÓN', '', 'ASPECTOS QUE CONFORMAN EL PROCESO ALIMENTARIO',  0, '', '1993-12-31'),
 ('CUA-00116', 'Cuadernos', 'XXXX', '', 'UNIDADES DE PRODUCCIÓN CON TIERRA EJIDAL O COMUNAL',  0, '', '1991-06-30'),
 ('CUA-00117', 'Cuadernos', 'XXXX', '', 'RESUMEN GENERAL',  0, '', '1990-11-30'),
 ('CUA-00119', 'Cuadernos', '', '',   0, '', '0000-00-00'),

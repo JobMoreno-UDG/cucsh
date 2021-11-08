@@ -14,7 +14,8 @@ class CreateCuadernosTable extends Migration
     public function up()
     {
         Schema::create('cuadernos', function (Blueprint $table) {
-            $table->string('clasificacion',40)->unique();
+            $table->id();
+            $table->string('clasificacion',40);
             $table->string('titulo',100);
             $table->integer('anio');
             $table->string('editorial',50);

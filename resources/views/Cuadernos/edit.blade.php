@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('titulo', 'Editar - Cuadernos')
+@section('titulo', 'Editar - Cuaderno')
 
 @section('content')
 <form action="{{route('cuadernos.update',$cuaderno->clasificacion)}}" class="row justify-content-bettwen" method="POST">

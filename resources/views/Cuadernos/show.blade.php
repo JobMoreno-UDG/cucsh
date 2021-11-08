@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('title', 'Mostrar Cuaderno')
+@section('title', 'Mostrar - Cuadernos')
 
 
 @section('content')
@@ -64,7 +64,7 @@
             <span><b>Inventario </b> <br>{{($info->inventario == '') ?'-' :$info->inventario }}</span>
         </div>
         <div class="col-sm-12 col-md-3">
-            <span><b>Fecha Publicación </b> <br>{{ ($info->fecha_publicacion == 0 ) ? 'Desconocida'  :str_replace(' 00:00:00', '',$info->fecha_publicacion); }}</span>
+            <span><b>Fecha Publicación </b> <br>{{ ($info->fecha_publicacion == '0000-00-00' ) ? '-'  :str_replace(' 00:00:00', '',$info->fecha_publicacion); }}</span>
         </div>
     </div>
     @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')

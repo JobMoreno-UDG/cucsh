@@ -10,6 +10,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/all.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -17,7 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <title>@yield('titulo')</title>
+    <script src="https://your-site-or-cdn.com/fontawesome/v6.0.0-beta2/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 
 <body>
@@ -30,6 +33,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
+                <img src="{{URL::asset('image/imagen.png'); }}" style="width: 50px;"/>
                 <ul class="navbar-nav mr-auto">
                     <a class="nav-link" aria-current="page" href="{{ url('/') }}">Home</a>
                     <a class="nav-link" href="{{ route('libros.index') }}">Libros</a>

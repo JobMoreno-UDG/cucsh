@@ -1,5 +1,5 @@
 @extends('layout.plantilla')
-@section('titulo', 'Editar Libro')
+@section('titulo', 'Editar - Libro')
 
 @section('content')
 <form action="{{route('libros.update',$libros->clasificacion)}}" class="row justify-content-bettwen" method="POST">
@@ -68,6 +68,7 @@
         <label for="resguardo" class="form-label">Resguardo</label>
         <input class="form-control"  type="text" name="resguardo" id="resguardo" value="{{$info->resguardo}}">
     </div>
+
     <div class="col-8">
         <label for="contenido" class="form-label">Contenido</label>
         <textarea class="form-control" name="contenido">{{$info->contenido}}</textarea>
@@ -75,6 +76,10 @@
     <div class="col-auto">
         <label for="inventario" class="form-label">Inventario</label>
         <input class="form-control"  type="text" name="inventario" id="inventario" value="{{$info->inventario}}">
+    </div>
+    <div class="col-auto">
+        <label for="space" class="form-label">Space</label>
+        <input class="form-control"  type="text" name="space" id="space" value="{{$libros->space}}">
     </div>
     <div class="col-auto">
         <label for="fecha_publicacion" class="form-label">Fecha Publicación</label>

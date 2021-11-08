@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PrestamosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $prestamos = Prestamos::paginate(10);
         return view('Prestamos.index',compact('prestamos'));

@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CuadernosExport;
 use App\Models\Cuadernos;
 use App\Models\Informacion;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CuadernosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $cuadernos = Cuadernos::paginate(10);
-        return view('Cuadernos.index', compact('cuadernos'));
+        $total = count(Cuadernos::all());
+        return view('Cuadernos.index', compact('cuadernos','total'));
     }
 
     public function show($clasificacion)
@@ -121,5 +128,9 @@ class CuadernosController extends Controller
 
         $cuadernos = Cuadernos::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->paginate(10);
         return view('Cuadernos.busqueda',compact('cuadernos'));
+    }
+    public function export()
+    {
+        return Excel::download(new CuadernosExport, 'cuadernos.xlsx');
     }
 }
