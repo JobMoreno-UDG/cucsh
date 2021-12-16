@@ -74,8 +74,9 @@ class BibliografiaDigitalController extends Controller
             'buscar_por' => 'required',
         ]);
 
-        $bibliografia = BibliografiaDigital::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->paginate(10);
-        return view('BibliografiaDigital.buscar',compact('bibliografia'));
+        $bibliografia = BibliografiaDigital::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->get();
+        $total = count($bibliografia);
+        return view('BibliografiaDigital.buscar',compact('bibliografia','total'));
     }
 
     public function export()

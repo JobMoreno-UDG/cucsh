@@ -29,7 +29,8 @@
         </div>
         @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
             <div class="col-sm-12 col-md-2 m-1">
-                <a class="w-100 col-sm-12 col-auto btn btn-primary" href="{{ route('bibliografia_digital.registro') }}">Añadir Registro</a>
+                <a class="w-100 col-sm-12 col-auto btn btn-primary"
+                    href="{{ route('bibliografia_digital.registro') }}">Añadir Registro</a>
             </div>
         @endif
     </form>
@@ -39,7 +40,8 @@
         </div>
         @if (Auth::user()->rol == '2' or Auth::user()->rol == '1')
             <div class="col-auto">
-                <a href="{{ route('bibliografia.export') }}" class="btn">Expotar a Excel <i class="bi bi-arrow-down-circle"></i></a>
+                <a href="{{ route('bibliografia.export') }}" class="btn">Expotar a Excel <i
+                        class="bi bi-arrow-down-circle"></i></a>
             </div>
         @endif
     </div>
@@ -86,5 +88,12 @@
     <div class="row">
         {{ $bibliografia->links() }}
     </div>
+    <script>
+        if (!!window.performance && window.performance.navigation.type === 2) {
+            // value 2 means "The page was accessed by navigating into the history"
+            console.log('Reloading');
+            window.location.reload(); // reload whole page
 
+        }
+    </script>
 @endsection

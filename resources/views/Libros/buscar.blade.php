@@ -38,8 +38,8 @@
                 </div>
             </div>
         @endforeach
-        {{ $libros->links() }}
     @else
+        <hr>
         <h1>No hay coincidencias</h1>
     @endif
     <a href="{{ route('libros.index') }}" class="btn btn-outline-dark col-2">Regresar</a>

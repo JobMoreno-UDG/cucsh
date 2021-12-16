@@ -126,7 +126,7 @@ class CuadernosController extends Controller
             'buscar_por' => 'required',
         ]);
 
-        $cuadernos = Cuadernos::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->paginate(10);
+        $cuadernos = Cuadernos::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->get();
         return view('Cuadernos.busqueda',compact('cuadernos'));
     }
     public function export()

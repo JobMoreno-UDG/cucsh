@@ -124,12 +124,11 @@ class LibrosController extends Controller
             'buscar_por' => 'required',
         ]);
 
-        $libros = Libros::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->paginate(10);
+        $libros = Libros::where($request->buscar_por,'LIKE','%'.$request->buscar.'%')->get();
         return view('Libros.buscar',compact('libros'));
     }
     public function export()
     {
-
         return Excel::download(new LibrosExport, 'libros.xlsx');
     }
 }

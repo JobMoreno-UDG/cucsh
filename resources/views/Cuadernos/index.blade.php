@@ -50,7 +50,7 @@
     </div>
     <div class="row">
         @foreach ($cuadernos as $item)
-            <div class="card col-12">
+            <div class="card col-12 m-1">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
@@ -86,5 +86,16 @@
             </div>
         @endforeach
     </div>
-    {{ $cuadernos->links() }}
+
+    <div class="row">
+        {{ $cuadernos->links() }}
+    </div>
+    <script>
+        if (!!window.performance && window.performance.navigation.type === 2) {
+            // value 2 means "The page was accessed by navigating into the history"
+            console.log('Reloading');
+            window.location.reload(); // reload whole page
+
+        }
+    </script>
 @endsection

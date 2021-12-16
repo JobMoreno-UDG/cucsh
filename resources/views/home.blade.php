@@ -2,56 +2,59 @@
 @section('titulo', 'Inicio')
 
 @section('content')
-<div class="row">
-    <a href="{{route('libros.index')}}"  class="text-center col-sm-12 col-md-4">
-        <div class="card ">
-            <div class="card-body">
-                <h2><i class="bi bi-book"></i> Libros</h2>
+    <div class="row justify-content-center">
+        <a href="{{ route('libros.index') }}" class="text-center btn bg-dark m-1 col-sm-12 col-md-4">
+            <div class="card text-white  bg-dark">
+                <div class="card-body">
+                    <h2><i class="bi bi-book"></i> Libros</h2>
+                </div>
             </div>
-        </div>
-    </a>
-    <a href="{{route('revistas.index')}}"  class=" text-center col-sm-12 col-md-4">
-        <div class="card ">
-            <div class="card-body">
-                <h2><i class="bi bi-book"></i> Revistas</h2>
+        </a>
+        <a href="{{ route('revistas.index') }}" class=" text-center btn bg-dark m-1 col-sm-12 col-md-3">
+            <div class="card  text-white bg-dark">
+                <div class="card-body">
+                    <h2><i class="bi bi-book"></i> Revistas</h2>
+                </div>
             </div>
-        </div>
-    </a>
-    <a href="{{route('bibliografia_digital.index')}}"  class=" text-center col-sm-12 col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h2><i class="bi bi-book"></i> Bibliografia Digital</h2>
+        </a>
+        <a href="{{ route('bibliografia_digital.index') }}" class="text-center btn m-1 bg-dark col-sm-12 col-md-4">
+            <div class="card text-white  bg-dark">
+                <div class="card-body">
+                    <h2><i class="bi bi-book"></i> Bibliografia Digital</h2>
+                </div>
             </div>
-        </div>
-    </a>
-</div>
-<br>
-<div class="row">
-    <a href="{{route('cuadernos.index')}}"  class="text-center  col-sm-12 col-md-4">
-        <div class="card ">
-            <div class="card-body">
-                <h2><i class="bi bi-book"></i> Cuadernos</h2>
+        </a>
+    </div>
+
+
+    <br>
+
+    <div class="row justify-content-center">
+        <a href="{{ route('cuadernos.index') }}" class="text-center btn m-1 bg-dark col-sm-12 col-md-3">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h2><i class="bi bi-book"></i> Cuadernos</h2>
+                </div>
             </div>
-        </div>
-    </a>
-    @if(Auth::user()->rol == '2' || Auth::user()->rol == '1')
-        @if (Auth::user()->rol == '2' )
-            <a href="{{route('usuario.index')}}"  class=" text-center  col-sm-12 col-md-4">
-                <div class="card ">
+        </a>
+        @if (Auth::user()->rol == '2' || Auth::user()->rol == '1')
+            @if (Auth::user()->rol == '2')
+                <a href="{{ route('usuario.index') }}" class=" text-center btn m-1 bg-dark col-sm-12 col-md-5">
+                    <div class="card text-white  bg-dark">
+                        <div class="card-body">
+                            <h2><i class="bi bi-person-circle"></i> Usuarios</h2>
+                        </div>
+                    </div>
+                </a>
+            @endif
+            <a href="{{ route('prestamos.index') }}" class=" text-center btn m-1 bg-dark col-sm-12 col-md-3">
+                <div class="card text-white  bg-dark">
                     <div class="card-body">
-                        <h2><i class="bi bi-person-circle"></i> Usuarios</h2>
+                        <h2>Prestamos</h2>
                     </div>
                 </div>
             </a>
         @endif
-        <a href="{{route('prestamos.index')}}"  class=" text-center  col-sm-12 col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h2>Prestamos</h2>
-                </div>
-            </div>
-        </a>
-    @endif
-</div>
+    </div>
 
 @endsection

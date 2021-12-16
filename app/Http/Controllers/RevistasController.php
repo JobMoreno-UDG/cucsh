@@ -118,7 +118,7 @@ class RevistasController extends Controller
             'buscar_por' => 'required',
         ]);
 
-        $revistas = Revistas::where($request->buscar_por, 'LIKE', '%' . $request->buscar . '%')->paginate(10);
+        $revistas = Revistas::where($request->buscar_por, 'LIKE', '%' . $request->buscar . '%')->get();
         return view('Revistas.buscar', compact('revistas'));
     }
     public function delete($clasificacion){

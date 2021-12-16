@@ -35,7 +35,7 @@ Route::post('bibliografia_digital/update',[BibliografiaDigitalController::class,
 Route::get('bibliografia/{bibliografia}/delete',[BibliografiaDigitalController::class,'delete'])->name('bibliografia_digital.delete');
 
 Route::get('bibliografia_digital/{bibliogarfia}',[BibliografiaDigitalController::class,'show'])->name('bibliografia_digital.show');
-Route::post('bibliografia_digital/buscar',[BibliografiaDigitalController::class,'buscar'])->name('bibliografia_digital.buscar');
+Route::post('bibliografia/buscar',[BibliografiaDigitalController::class,'buscar'])->name('bibliografia_digital.buscar');
 
 
 # Rutas de Caudernos
@@ -90,7 +90,9 @@ Auth::routes();
 
 Route::get('usuarios/registro',[UserController::class,'registro'])->name('usuario.registro');
 Route::post('usuarios/create',[UserController::class,'create'])->name('usuario.create');
-Route::get('usuarios/index',[UserController::class,'index'])->name('usuario.index');
+Route::get('usuarios',[UserController::class,'index'])->name('usuario.index');
+Route::post('usuarios/buscar',[UserController::class,'search'])->name('usuarios.search');
+
 
 
 # Prestamos
@@ -98,7 +100,10 @@ Route::get('usuarios/index',[UserController::class,'index'])->name('usuario.inde
 Route::get('prestamos',[PrestamosController::class,'index'])->name('prestamos.index');
 Route::get('prestamos/{tipo}/{clasificacion}/registro',[PrestamosController::class,'registro'])->name('prestamos.registro');
 Route::post('prestamos/create',[PrestamosController::class,'create'])->name('prestamos.create');
-Route::get('prestamos/{tipo}/{clasificacion}/{fecha_presatdo}/cerrar',[PrestamosController::class,'cerrar_prestamo'])->name('prestamos.cerrar');
+Route::get('prestamos/{tipo}/{clasificacion}/{fecha_presatdo}/{prestado_A}/cerrar',[PrestamosController::class,'cerrar_prestamo'])->name('prestamos.cerrar');
+Route::post('prestamos/buscar',[PrestamosController::class,'search'])->name('prestamos.search');
+Route::get('prestamos/resultados/{buscar_por}/{buscar}',[PrestamosController::class,'resultados'])->name('prestamos.resultados');
+
 
 
 # Excel

@@ -2,34 +2,93 @@
 @section('titulo', 'Prestamos')
 
 @section('content')
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Clasificacion</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Prestado A</th>
-            <th scope="col">Fecha Prestado</th>
-            <th scope="col">Fecha Entregado</th>
-            <th scope="col">Status</th>
-            <th scope="col">Cerrar prestamo</th>
-        </tr>
-    </thead>
-    @foreach ($prestamos as $item)
-        <tbody>
-            <td>{{$item->id}}</td>
-            <td>{{$item->clasificacion}}</td>
-            <td>{{$item->tipo}}</td>
-            <td>{{$item->prestado_A}}</td>
-            <td>{{$item->fecha_prestamo}}</td>
-            <td>{{($item->fecha_entrega == Null)? 'No entregado' : $item->fecha_entrega}}</td>
-            <td>{{$item->status}}</td>
-            @if ($item->status == 'Abierto')
-                <td><a class="col-sm-12  col-auto btn btn-sm btn-outline-danger " href="{{route('prestamos.cerrar',[$item->clasificacion,$item->tipo,$item->fecha_prestamo])}}">Cerrar Prestamo</a></td>
-            @endif
+<br>
+    <div class="row justify-content-between">
+        <form class="row col-md-8 col-sm-12" id="form-busqueda" action="{{ route('prestamos.search') }}" method="POST">
+            @csrf
+            <div class="col-sm-12 col-md-4">
+                <select class="form-control" name="buscar_por" id="buscar_por" onChange="cambio()">
+                    <option value="" selected>Buscar por</option>
+                    <option value="prestado_A">Nombre</option>
+                    <option value="fecha_prestamo">Fecha Prestamo</option>
+                    <option value="status">Status</option>
+                </select>
+                @error('buscar_por')
+                    <small>{{ $message }}</small>
+                    <br>
+                @enderror
+            </div>
+            <div class="col-sm-12 col-md-4" >
+                <div id='valor'>
 
-        </tbody>
+                </div>
+                @error('buscar')
+                    <small>{{ $message }}</small>
+                    <br>
+                @enderror
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <button type="submit" class="w-100 btn btn-dark">Buscar</button>
+            </div>
 
-    @endforeach
-</table>
+        </form>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+               Total Prestamos Cerrados  <b>{{ $entregados }}</b> Total Prestamos Abiertos <b>{{ $no_entregados }}</b>
+               <br/> Total <b>{{$no_entregados + $entregados}}</b>
+            </div>
+        </div>
+
+    </div>
+    <div id="contenedor">
+
+    </div>
+    <script>
+        if (!!window.performance && window.performance.navigation.type === 2) {
+            // value 2 means "The page was accessed by navigating into the history"
+            console.log('Reloading');
+            window.location.reload(); // reload whole page
+
+        }
+        function cambio() {
+            let valor = document.getElementById("buscar_por");
+            let area = document.getElementById("valor");
+            console.log(valor);
+            if (area.hasChildNodes()) {
+                area.removeChild(area.lastChild);
+            }
+            if (valor.value == "prestado_A") {
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = 'buscar';
+                input.placeholder = 'Introduce para buscar';
+                input.className = "form-control";
+                input.setAttribute("id", 'buscar')
+                area.appendChild(input);
+
+            } else if (valor.value == "fecha_prestamo") {
+                let date = document.createElement("INPUT");
+                date.setAttribute("type", "date");
+                date.name = 'buscar';
+                date.className = 'form-control';
+                date.setAttribute("id", 'buscar')
+                area.appendChild(date);
+
+            } else if (valor.value == "status") {
+                let select = document.createElement("select");
+                select.name = 'buscar';
+                select.className = 'form-control';
+                let opciones = ['- - -', 'Abierto', 'Cerrado'];
+                let valores = ['', 'Abierto', 'Cerrado'];
+                for (var i = 0; i < opciones.length; i++) {
+                    let option = document.createElement("option");
+                    option.text = opciones[i];
+                    option.value = valores[i];
+                    select.add(option);
+                }
+                select.setAttribute("id", 'buscar')
+                area.appendChild(select);
+            }
+        }
+    </script>
 @endsection

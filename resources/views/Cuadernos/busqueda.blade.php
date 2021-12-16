@@ -39,8 +39,8 @@
                 </div>
             </div>
         @endforeach
-        {{ $cuadernos->links() }}
     @else
+        <hr>
         <h1>No hay coincidencias</h1>
     @endif
     <a class="btn btn-outline-dark col-3" href="{{ route('cuadernos.index') }}">Regresar</a>
