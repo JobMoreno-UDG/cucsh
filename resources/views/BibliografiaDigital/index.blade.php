@@ -73,11 +73,10 @@
                                 <a href="{{ route('bibliografia_digital.delete', $item->clasificacion) }}"
                                     class="btn btn-outline-danger col-sm-6 col-md-2 m-1">Eliminar</a>
                             @endif
-                            <a class="m-1 col-sm-6  col-md-2 btn btn-outline-dark"
+                            <!--<a class="m-1 col-sm-6  col-md-2 btn btn-outline-dark"
                                 href="{{ route('prestamos.registro', ['Bibliografia Digital', $item->clasificacion]) }}">Registrar
                                 Prestamo</a>
-
-
+                            -->
                         @endif
                     </div>
 
@@ -91,7 +90,6 @@
     <script>
         if (!!window.performance && window.performance.navigation.type === 2) {
             // value 2 means "The page was accessed by navigating into the history"
-            console.log('Reloading');
             window.location.reload(); // reload whole page
 
         }

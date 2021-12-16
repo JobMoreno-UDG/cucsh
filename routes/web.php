@@ -112,3 +112,9 @@ Route::get('bibliografia', [BibliografiaDigitalController::class,'export'])->nam
 Route::get('libro/export', [LibrosController::class,'export'])->name('libros.export');
 Route::get('cuaderno/export', [CuadernosController::class,'export'])->name('cuadernos.export');
 Route::get('revista/export', [RevistasController::class,'export'])->name('revistas.export');
+
+
+# Perfil
+
+Route::get('perfil',[UserController::class,'perfil'])->name('usuario.perfil');
+Route::put('perfil',[UserController::class,'password_change'])->name('usuario.change_password');

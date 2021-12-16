@@ -2,6 +2,7 @@
 @section('titulo', 'Inicio')
 
 @section('content')
+
     <div class="row justify-content-center">
         <a href="{{ route('libros.index') }}" class="text-center btn bg-dark m-1 col-sm-12 col-md-4">
             <div class="card text-white  bg-dark">
